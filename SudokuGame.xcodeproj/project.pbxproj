@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2988A548299DBA8700DFB70D /* SudokuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2988A547299DBA8700DFB70D /* SudokuViewController.m */; };
 		29AD4F6E29908CE300DB2A16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD4F6D29908CE300DB2A16 /* AppDelegate.m */; };
 		29AD4F7029908CE300DB2A16 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29AD4F6F29908CE300DB2A16 /* GameScene.sks */; };
 		29AD4F7229908CE300DB2A16 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29AD4F7129908CE300DB2A16 /* Actions.sks */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2988A546299DBA8700DFB70D /* SudokuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudokuViewController.h; sourceTree = "<group>"; };
+		2988A547299DBA8700DFB70D /* SudokuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SudokuViewController.m; sourceTree = "<group>"; };
 		29AD4F6929908CE300DB2A16 /* SudokuGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudokuGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AD4F6C29908CE300DB2A16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		29AD4F6D29908CE300DB2A16 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 				29AD4F8129908CE400DB2A16 /* main.m */,
 				29EE296A2990927F00842B6B /* HomeViewController.h */,
 				29EE296B2990927F00842B6B /* HomeViewController.m */,
+				2988A546299DBA8700DFB70D /* SudokuViewController.h */,
+				2988A547299DBA8700DFB70D /* SudokuViewController.m */,
 			);
 			path = SudokuGame;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 				29AD4F7529908CE300DB2A16 /* GameScene.m in Sources */,
 				29AD4F7829908CE300DB2A16 /* GameViewController.m in Sources */,
 				29AD4F8229908CE400DB2A16 /* main.m in Sources */,
+				2988A548299DBA8700DFB70D /* SudokuViewController.m in Sources */,
 				29EE296C2990927F00842B6B /* HomeViewController.m in Sources */,
 				29AD4F6E29908CE300DB2A16 /* AppDelegate.m in Sources */,
 			);
