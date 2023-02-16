@@ -9,6 +9,10 @@
 
 @interface SudokuViewController ()
 
+- (IBAction)boardTapAction:(id)sender;
+- (IBAction)numberSelector:(id)sender;
+- (IBAction)addToBoard:(id)sender;
+
 @end
 
 @implementation SudokuViewController
@@ -20,7 +24,30 @@
     
 }
 
+- (IBAction)addToBoard:(id)sender
+{
+    if ([sender isKindOfClass:[UIButton class]]) {
+        UIButton *button = (UIButton *)sender;
+        NSString *title = button.currentTitle;
+        // Do something with the title
+        if (title == nil)
+        {
+            [self numberSelector:sender];
+        }
+    }
+}
 
+- (IBAction)boardTapAction:(id)sender
+{
+    [self addToBoard:sender];
+}
+
+- (IBAction)numberSelector:(id)sender
+{
+    
+    
+}
+    
 - (void)viewDidLoad {
     
     
@@ -28,6 +55,7 @@
     // Do any additional setup after loading the view.
     [Home addTarget:self action:@selector(goHome:) forControlEvents:UIControlEventTouchUpInside];
 }
+
 
 /*
 #pragma mark - Navigation
