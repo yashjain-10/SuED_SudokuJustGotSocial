@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="1696.9465648854962" y="-946.47887323943667"/>
         </scene>
-        <!--Table View Controller-->
+        <!--New Game Table-->
         <scene sceneID="RYh-6A-aI7">
             <objects>
-                <tableViewController id="7Gp-aE-gad" sceneMemberID="viewController">
+                <tableViewController id="7Gp-aE-gad" customClass="NewGameTable" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="5sl-h0-mgt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,6 +264,11 @@
                                             <attributedString key="attributedTitle"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="dmY-0W-jBx" kind="popoverPresentation" popoverAnchorView="Z6B-kf-We8" id="PYt-b2-ff1">
+                                                <popoverArrowDirection key="popoverArrowDirection" down="YES"/>
+                                            </segue>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.46999900361448133" green="0.13591608880784392" blue="0.17630222877249505" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -280,13 +285,6 @@
                                     <constraint firstItem="Z6B-kf-We8" firstAttribute="leading" secondItem="3i4-Ym-VNw" secondAttribute="trailing" constant="229" id="yqF-a5-eiR"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q10-Gz-kdO">
-                                <rect key="frame" x="76" y="311" width="240" height="230"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="uEg-bo-p66" kind="embed" id="c44-qP-pgJ"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WPn-3p-pNy"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
@@ -306,6 +304,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGQ-X4-AWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3852.6717557251909" y="-1485.2112676056338"/>
+        </scene>
+        <!--Pause View Controller-->
+        <scene sceneID="L9W-Sm-yRJ">
+            <objects>
+                <viewController id="dmY-0W-jBx" customClass="PauseViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0vr-iW-MTa">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwi-cd-lX6">
+                                <rect key="frame" x="102" y="275" width="189" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Resume">
+                                            <attributes>
+                                                <font key="NSFont" size="20" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KPe-Z9-HoG"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.99651354550000004" green="0.89072316880000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <connections>
+                        <outlet property="Resume" destination="gwi-cd-lX6" id="244-aB-Imj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qrD-EZ-Zz7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4780.9160305343512" y="-1485.2112676056338"/>
         </scene>
         <!--Stats-->
         <scene sceneID="mNR-6f-Mgd">
@@ -391,20 +426,6 @@
             </objects>
             <point key="canvasLocation" x="589" y="-946"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="aIo-gP-gJM">
-            <objects>
-                <viewController id="uEg-bo-p66" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ks1-aP-Haz">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="230"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kRk-9Q-Otk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4540" y="-1235"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="f4v-0s-edu"/>
@@ -417,9 +438,6 @@
         <image name="trophy" catalog="system" width="128" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

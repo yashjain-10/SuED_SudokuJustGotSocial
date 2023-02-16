@@ -1,32 +1,27 @@
 //
-//  SudokuViewController.m
+//  PauseViewController.m
 //  SudokuGame
 //
 //  Created by Yash Jain on 2/16/23.
 //
 
-#import "SudokuViewController.h"
+#import "PauseViewController.h"
 
-@interface SudokuViewController ()
+@interface PauseViewController ()
 
 @end
 
-@implementation SudokuViewController
+@implementation PauseViewController
 
-- (IBAction)goHome:(id)sender
+- (IBAction)ResumeGame:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    //[self.navigationController popToRootViewControllerAnimated:YES];
-    
 }
 
-
 - (void)viewDidLoad {
-    
-    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [Home addTarget:self action:@selector(goHome:) forControlEvents:UIControlEventTouchUpInside];
+    [Resume addTarget:self action:@selector(ResumeGame:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 /*

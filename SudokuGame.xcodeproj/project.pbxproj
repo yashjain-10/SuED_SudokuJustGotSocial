@@ -17,6 +17,7 @@
 		29AD4F7D29908CE400DB2A16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29AD4F7C29908CE400DB2A16 /* Assets.xcassets */; };
 		29AD4F8029908CE400DB2A16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29AD4F7E29908CE400DB2A16 /* LaunchScreen.storyboard */; };
 		29AD4F8229908CE400DB2A16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD4F8129908CE400DB2A16 /* main.m */; };
+		29C18470299DDAAA00FCB5EA /* PauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C1846F299DDAAA00FCB5EA /* PauseViewController.m */; };
 		29EE296C2990927F00842B6B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EE296B2990927F00842B6B /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,8 @@
 		29AD4F7C29908CE400DB2A16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29AD4F7F29908CE400DB2A16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29AD4F8129908CE400DB2A16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29C1846E299DDAAA00FCB5EA /* PauseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PauseViewController.h; sourceTree = "<group>"; };
+		29C1846F299DDAAA00FCB5EA /* PauseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PauseViewController.m; sourceTree = "<group>"; };
 		29EE296A2990927F00842B6B /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		29EE296B2990927F00842B6B /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +82,8 @@
 				29AD4F7629908CE300DB2A16 /* GameViewController.h */,
 				29AD4F7729908CE300DB2A16 /* GameViewController.m */,
 				29AD4F7929908CE300DB2A16 /* Main.storyboard */,
+				29C1846E299DDAAA00FCB5EA /* PauseViewController.h */,
+				29C1846F299DDAAA00FCB5EA /* PauseViewController.m */,
 				29AD4F7C29908CE400DB2A16 /* Assets.xcassets */,
 				29AD4F7E29908CE400DB2A16 /* LaunchScreen.storyboard */,
 				29AD4F8129908CE400DB2A16 /* main.m */,
@@ -168,6 +173,7 @@
 				2988A548299DBA8700DFB70D /* SudokuViewController.m in Sources */,
 				29EE296C2990927F00842B6B /* HomeViewController.m in Sources */,
 				29AD4F6E29908CE300DB2A16 /* AppDelegate.m in Sources */,
+				29C18470299DDAAA00FCB5EA /* PauseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
