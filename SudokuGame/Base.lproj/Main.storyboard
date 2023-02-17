@@ -307,8 +307,7 @@
                                                                     <attributedString key="attributedTitle"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="addToBoard:" destination="eXl-cX-IrE" eventType="touchUpInside" id="6U0-99-mMN"/>
-                                                                    <action selector="coord00:" destination="eXl-cX-IrE" eventType="touchUpInside" id="rgF-bt-KyV"/>
+                                                                    <action selector="boardTapAction:" destination="eXl-cX-IrE" eventType="touchUpInside" id="tGD-Ho-IlW"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDT-XX-gdA">
@@ -321,7 +320,7 @@
                                                                     <attributedString key="attributedTitle"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="addToBoard:" destination="eXl-cX-IrE" eventType="touchUpInside" id="V23-VT-QEr"/>
+                                                                    <action selector="boardTapAction:" destination="eXl-cX-IrE" eventType="touchUpInside" id="pay-jX-H37"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRr-Tv-CGc">
@@ -334,7 +333,7 @@
                                                                     <attributedString key="attributedTitle"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="addToBoard:" destination="eXl-cX-IrE" eventType="touchUpInside" id="ply-cY-FPb"/>
+                                                                    <action selector="boardTapAction:" destination="eXl-cX-IrE" eventType="touchUpInside" id="cRE-dm-G29"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -2122,7 +2121,7 @@
                     <connections>
                         <outlet property="Home" destination="3i4-Ym-VNw" id="6jO-mi-vN9"/>
                         <outlet property="Pause" destination="Z6B-kf-We8" id="i9M-Nt-sjm"/>
-                        <outlet property="coord00" destination="DhU-qY-870" id="rhw-tt-zxE"/>
+                        <outlet property="coord00" destination="DhU-qY-870" id="1ZX-9T-C55"/>
                         <outlet property="coord10" destination="gDT-XX-gdA" id="qhA-6j-J5R"/>
                         <outlet property="coord20" destination="PRr-Tv-CGc" id="exH-4g-gNr"/>
                         <outlet property="number1" destination="Lgk-me-tZX" id="Ons-MN-rar"/>

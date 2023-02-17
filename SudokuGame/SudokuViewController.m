@@ -9,9 +9,6 @@
 
 @interface SudokuViewController ()
 
-- (IBAction)boardTapAction:(id)sender;
-- (IBAction)numberSelector:(id)sender;
-- (IBAction)addToBoard:(id)sender;
 
 @end
 
@@ -24,23 +21,26 @@
     
 }
 
-- (IBAction)addToBoard:(id)sender
+- (IBAction)addtoBoard:(id)sender
 {
-    if ([sender isKindOfClass:[UIButton class]]) {
+    if ([sender isKindOfClass:[UIButton class]])
+    {
         UIButton *button = (UIButton *)sender;
         NSString *title = button.currentTitle;
         // Do something with the title
         if (title == nil)
         {
-            [self numberSelector:sender];
+            [button setTitle:@"9" forState:UIControlStateHighlighted];
         }
     }
 }
 
 - (IBAction)boardTapAction:(id)sender
 {
-    [self addToBoard:sender];
+    [self addtoBoard:sender];
 }
+
+
 
 - (IBAction)numberSelector:(id)sender
 {
