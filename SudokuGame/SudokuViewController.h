@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
     IBOutlet UIButton *number8;
     IBOutlet UIButton *number9;
     
+    IBOutlet UIButton *Tester;
+    IBOutlet UIButton *Tester2;
+    
 }
 @end
 
