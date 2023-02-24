@@ -42,31 +42,25 @@ NSString *number;
     
 }
 
+UIButton *button = nil;
+
 - (IBAction)addtoBoard:(id)sender
 {
     if ([sender isKindOfClass:[UIButton class]])
     {
+        button.backgroundColor = [UIColor whiteColor];
         UIButton *coord = (UIButton *)sender;
         NSString *title = coord.currentTitle;
+        button = (UIButton *)sender;
+        button.backgroundColor = [UIColor blueColor];
         // Do something with the title
+        /*
         if (title == nil)
         {
             [coord setTitle:number forState:UIControlStateHighlighted];
         }
+         */
     }
-}
-
-- (IBAction)boardTapAction:(id)sender
-{
-    [self addtoBoard:sender];
-}
-
-UIButton *button = nil;
-
-- (IBAction)buttonTapped:(id)sender
-{
-    button = (UIButton *)sender;
-    [button setBackgroundColor:[UIColor blackColor]];
 }
 
 
