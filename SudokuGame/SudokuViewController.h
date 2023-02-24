@@ -15,9 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 {
     IBOutlet UIButton *Pause;
     IBOutlet UIButton *Home;
-    IBOutlet UIButton *coord00;
-    IBOutlet UIButton *coord10;
-    IBOutlet UIButton *coord20;
     
     
     // ALl the sudoku numbers
@@ -30,9 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
     IBOutlet UIButton *number7;
     IBOutlet UIButton *number8;
     IBOutlet UIButton *number9;
-    
-    IBOutlet UIButton *Tester;
-    IBOutlet UIButton *Tester2;
     
 }
 @end
