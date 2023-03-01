@@ -2,26 +2,31 @@
 //  PauseViewController.m
 //  SudokuGame
 //
-//  Created by Yash Jain on 2/16/23.
+//  Created by Yash Jain on 2/28/23.
 //
 
 #import "PauseViewController.h"
 
 @interface PauseViewController ()
 
+
+
 @end
 
 @implementation PauseViewController
 
-- (IBAction)ResumeGame:(id)sender
-{
+
+- (IBAction)resumeButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [Resume addTarget:self action:@selector(ResumeGame:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.startTime = [NSDate date];
+    
+    // To get the value of startTime:
+    //NSDate *startTime = self.startTime;
 }
 
 /*

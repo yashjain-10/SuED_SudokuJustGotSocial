@@ -13,11 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SudokuViewController : UIViewController
 {
+    
     IBOutlet UIButton *Pause;
+    IBOutlet UIButton *Resume;
     IBOutlet UIButton *Home;
+    IBOutlet UIView *PauseMenu;
     
     
-    // ALl the sudoku numbers
+    // ALL the sudoku numbers
     IBOutlet UIButton *number1;
     IBOutlet UIButton *number2;
     IBOutlet UIButton *number3;
@@ -27,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
     IBOutlet UIButton *number7;
     IBOutlet UIButton *number8;
     IBOutlet UIButton *number9;
+    
+    IBOutlet UILabel *timer;
     
 }
 @end

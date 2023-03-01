@@ -6,15 +6,21 @@
 //
 
 #import "SudokuViewController.h"
+#import "TimerManager.h"
+//#import "SudokuLogic.mm"
 
 @interface SudokuViewController ()
 
+@property (nonatomic,strong) NSTimer *timerVar;
+@property (nonatomic, assign) NSTimeInterval startTime;
+@property (nonatomic, assign) NSTimeInterval elapsedTime;
 
 @end
 
 @implementation SudokuViewController
 
 NSString *number;
+UIButton *button = nil;
 
 - (void)setButtonTitles
 {
@@ -29,37 +35,114 @@ NSString *number;
     [number9 setTitle:@"9" forState:UIControlStateNormal];
 }
 
-- (void)accessButtons
+
+// Temporary function : TO BE DELETED
+- (void)tempfunc
 {
-    UIButton *tempbutton = [self.view viewWithTag:80];
-    [tempbutton setTitle:@"" forState:UIControlStateNormal];
+    for (int i = 0; i < 30; ++i)
+    {
+        int randomNumber = arc4random_uniform(89) + 1;
+        UIButton *tempbutton = [self.view viewWithTag:randomNumber];
+        [tempbutton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        randomNumber = arc4random_uniform(9) + 1;
+        [tempbutton setTitle:[NSString stringWithFormat:@"%d", randomNumber] forState:UIControlStateNormal];
+    }
 }
+//static NSTimeInterval elapsedTime = 0.0;
 
 - (IBAction)goHome:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self.timerVar invalidate];
     
 }
 
-UIButton *button = nil;
+// For Timer Functions
+- (void)timerFn
+{
+    //elapsedTime += 1.0;
+    NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
+    self.elapsedTime = currentTime - self.startTime;
+    int minutes = (int)self.elapsedTime / 60;
+    int seconds = (int)self.elapsedTime % 60;
+    timer.text = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
+}
+
+- (IBAction)pauseButtonPressed:(id)sender {
+    [self.timerVar invalidate];
+    self->PauseMenu.hidden = NO;
+}
+
+- (IBAction)resumeButtonPressed:(id)sender {
+    self.startTime = [NSDate timeIntervalSinceReferenceDate] - self.elapsedTime;
+    self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
+    self->PauseMenu.hidden = YES;
+}
+
+
+
+- (void)changeColors:(UIColor *)color
+{
+    // Adding Borders to the button
+    NSInteger tag = button.tag;
+    if (color != [UIColor whiteColor])
+    {
+        button.layer.borderWidth = 2.0f;
+        // Set the stroke color
+        button.layer.borderColor = [UIColor tintColor].CGColor;
+    }
+    else
+    {
+        button.layer.borderWidth = 0.0f;
+        // Set the stroke color
+        button.layer.borderColor = [UIColor whiteColor].CGColor;
+    }
+    if (tag == 89)
+        tag = 0;
+    
+    UIButton *toColor = nil;
+    // Coloring Column
+    for (NSInteger i = tag % 10; i <= 88; i += 10)
+    {
+        if (i == 0)
+        {
+            toColor = [self.view viewWithTag:89];
+            toColor.backgroundColor = color;
+        }
+        else
+        {
+            toColor = [self.view viewWithTag:i];
+            toColor.backgroundColor = color;
+        }
+    }
+    // Coloring Row
+    for (NSInteger i = tag - (tag % 10); i % 10 <= 8; i++)
+    {
+        if (i == 0)
+        {
+            toColor = [self.view viewWithTag:89];
+            toColor.backgroundColor = color;
+        }
+        else
+        {
+            toColor = [self.view viewWithTag:i];
+            toColor.backgroundColor = color;
+        }
+    }
+}
 
 - (IBAction)addtoBoard:(id)sender
 {
     if ([sender isKindOfClass:[UIButton class]])
     {
-        button.backgroundColor = [UIColor whiteColor];
-        UIButton *coord = (UIButton *)sender;
-        NSString *title = coord.currentTitle;
+        // When another button is pressed,
+        // Color the previous selection white
+        if (button != nil)
+            [self changeColors:[UIColor whiteColor]];
+        
         button = (UIButton *)sender;
-        button.backgroundColor = [UIColor blueColor];
-        // Do something with the title
-        /*
-        if (title == nil)
-        {
-            [coord setTitle:number forState:UIControlStateHighlighted];
-        }
-         */
+        [self changeColors:[UIColor lightGrayColor]];
     }
 }
 
@@ -73,7 +156,7 @@ UIButton *button = nil;
         //number = @"9";
         number = numberbutton.currentTitle;
         
-        if (button != nil)
+        if ([button.titleLabel textColor] != [UIColor blackColor])
         {
             [button setTitle:number forState:UIControlStateNormal];
         }
@@ -85,17 +168,22 @@ UIButton *button = nil;
     
     
     [super viewDidLoad];
+    
+    self->PauseMenu.hidden = YES;
+    
     // Do any additional setup after loading the view.
     [self setButtonTitles];
     
-    [self accessButtons];
+    [self tempfunc];
+    
     
     [Home addTarget:self action:@selector(goHome:) forControlEvents:UIControlEventTouchUpInside];
     
-    //[Tester addTarget:self action:@selector(numberSelector:) forControlEvents:UIControlEventTouchUpInside];
+    //elapsedTime = 0.0;
+    //self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
     
-    
-
+    self.startTime = [NSDate timeIntervalSinceReferenceDate];
+    self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
 }
 
 
