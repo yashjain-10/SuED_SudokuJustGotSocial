@@ -15,7 +15,7 @@ int empty = 0;
 @property (nonatomic, strong) NSMutableArray *Grid;
 @property (nonatomic, strong) NSMutableArray *SolnGrid;
 @property (nonatomic, strong) NSMutableArray *GuessNum;
-@property (nonatomic, strong) NSMutableArray *GuessPos;
+@property (nonatomic, strong) NSMutableArray *GridPos;
 
 
 
@@ -38,43 +38,40 @@ int empty = 0;
     self = [super init];
     if (self) {
         // Initialising the Grid to be array of 81 0s
-        _Grid = [NSMutableArray arrayWithCapacity:9];
-        for (int i = 0; i < 9; i++)
+        _Grid = [NSMutableArray arrayWithCapacity:N];
+        for (int i = 0; i < N; i++)
         {
-            NSMutableArray *row = [NSMutableArray arrayWithCapacity:9];
-            for (int j = 0; j < 9; j++) {
+            NSMutableArray *row = [NSMutableArray arrayWithCapacity:N];
+            for (int j = 0; j < N; j++) {
                 [row addObject:@(0)]; // set initial value to 0
             }
             [_Grid addObject:row];
         }
         
         // Initialising the SolnGrid to be array of 81 0s
-        _SolnGrid = [NSMutableArray arrayWithCapacity:9];
-        for (int i = 0; i < 9; i++)
+        _SolnGrid = [NSMutableArray arrayWithCapacity:N];
+        for (int i = 0; i < N; i++)
         {
-            NSMutableArray *row = [NSMutableArray arrayWithCapacity:9];
-            for (int j = 0; j < 9; j++) {
+            NSMutableArray *row = [NSMutableArray arrayWithCapacity:N];
+            for (int j = 0; j < N; j++) {
                 [row addObject:@(0)]; // set initial value to 0
             }
             [_SolnGrid addObject:row];
         }
         
         // Initialising the GuessNum array to be array from 1 - 9
-        _GuessNum = [NSMutableArray arrayWithCapacity:9];
-        for (int i = 1; i <= 9; i++) {
+        _GuessNum = [NSMutableArray arrayWithCapacity:N];
+        for (int i = 1; i <= N; i++) {
             [_GuessNum addObject:@(i)];
         }
+        [self shuffle1D:_GuessNum];
         
         // Initialising GuessPos to be an array of positions from 0 - 88
-        _GuessPos = [NSMutableArray arrayWithCapacity:9];
-        for (int i = 0; i < 9; i++)
-        {
-            NSMutableArray *row = [NSMutableArray arrayWithCapacity:9];
-            for (int j = 0; j < 9; j++) {
-                [row addObject:@(0)]; // set initial value to 0
-            }
-            [_GuessPos addObject:row];
+        _GridPos = [NSMutableArray arrayWithCapacity:N*N];
+        for (int i = 0; i < N*N; i++) {
+            [_GridPos addObject:@(i)];
         }
+        [self shuffle1D:_GridPos];
         
         _difficultyLevel = 0;
         
@@ -107,7 +104,7 @@ int empty = 0;
   * Shuffles the elements of a 2-D array
   * @param : an array to be shuffled
 */
-- (void)shuffle2DArray:(NSMutableArray *)array
+- (void)shuffle2D:(NSMutableArray *)array
 {
     NSUInteger rows = [array count];
     if (rows == 0)
@@ -147,16 +144,22 @@ int empty = 0;
   * @param takes in the grid and references the row and column variables
   * @return true if there is an empty space and false if the sudoku is complete
  */
-- (bool)FindEmptyLocation:(int *)row andColumn:(int *)col
+- (bool)FindEmptyLocation:(int *)row :(int *)col
 {
-    for (*row = 0; *row < N; (*row)++)
+    for (int i = 0; i < N*N; ++i)
     {
-        for (*col = 0; *col < N; (*col)++)
-        {
-            NSNumber *gridNum = _Grid[*row][*col];
-            if ([gridNum intValue] == empty)
-                return true;
-        }
+        //NSInteger
+        NSNumber *gridNum = _GridPos[i];
+        // Lets assume the coordinates like (0,0) , (0,1) ... (8,8)
+        // Then every row index will be the grid number divided by N
+        *row = [gridNum intValue] / N;
+        // And every column index will be the grid number modulo N
+        *col = [gridNum intValue] % N;
+        if (gridNum.intValue > 80)
+            exit(0);
+        if ([_Grid[*row][*col] intValue] == empty)
+            return true;
+        
     }
     return false;
 }
@@ -256,22 +259,52 @@ int empty = 0;
     
     // Find the next empty square to insert numbers
     // If no empty square can be found, the sudoku is solved
-    if (![self FindEmptyLocation:row :col])
+    if (![self FindEmptyLocation:&row :&col])
        return true;
     
     // Try finding the solution with every number possible
-    for (int i = 0; i <= N; i++)
+    for (int i = 1; i <= N; i++)
     {
         num = i;
         if ([self isGridSafe:row :col :num])
         {
-            Grid[row][col] = num;
+            _Grid[row][col] = @(num);
             if ([self SolveSudoku])
                 return true;
-            Grid[row][col] = empty;
+            _Grid[row][col] = @(empty);
         }
     }
     return false;
+}
+
+/*
+  * Counts the number of Solutions of the given Sudoku
+  * @return true if there is a soln, false otherwise
+ */
+- (void)CountSoln:(int *)soln
+{
+    // Initialsing the row and column
+    int row = 0;
+    int col = 0;
+    
+    // Find the next empty square to insert numbers
+    // If no empty square can be found, the sudoku is solved
+    if (![self FindEmptyLocation:&row :&col])
+    {
+        ++soln;
+        return;
+    }
+    
+    // Try finding the solution with every number possible
+    for (int num = 1; num <= N; num++)
+    {
+        if ([self isGridSafe:row :col :num])
+        {
+            _Grid[row][col] = @(num);
+            [self CountSoln:soln];
+        }
+        _Grid[row][col] = @(empty);
+    }
 }
 
 // ------------------------------------------------------------------------------------
@@ -295,11 +328,33 @@ int empty = 0;
     }
 }
 
+/*
+  * A helper function to pick random empty locations to add numbers
+*/
+
 
 // ------------------------------------------------------------------------------------
 // ------------------------------- SUDOKU GENERATION ----------------------------------
 // ------------------------------------ END HERE --------------------------------------
 // ------------------------------------------------------------------------------------
+
+- (void)PrintSudoku {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%d  ", [_Grid[i][j] intValue]);
+            if ((j+1) % 3 == 0) {
+                printf("|  ");
+            }
+        }
+        printf("\n");
+        if ((i+1) % 3 == 0) {
+            printf("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n");
+        }
+    }
+    printf("\n");
+}
+
+
 
 
 - (void)Print
