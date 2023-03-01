@@ -7,6 +7,7 @@
 
 #import "SudokuViewController.h"
 #import "TimerManager.h"
+#import "Sudoku.h"
 //#import "SudokuLogic.mm"
 
 @interface SudokuViewController ()
@@ -184,6 +185,9 @@ UIButton *button = nil;
     
     self.startTime = [NSDate timeIntervalSinceReferenceDate];
     self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
+    
+    Sudoku *sudoku = [[Sudoku alloc] init];
+    [sudoku Print];
 }
 
 

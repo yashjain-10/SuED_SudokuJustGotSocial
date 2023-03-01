@@ -19,7 +19,7 @@
 		29AD4F8229908CE400DB2A16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD4F8129908CE400DB2A16 /* main.m */; };
 		29EA4E2529AE2FF900A85F8A /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EA4E2429AE2FF900A85F8A /* TimerManager.m */; };
 		29EA4E2929AE30DD00A85F8A /* PauseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EA4E2829AE30DD00A85F8A /* PauseViewController.m */; };
-		29EA4E2F29AFB53500A85F8A /* Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EA4E2E29AFB53500A85F8A /* Sudoku.m */; };
+		29EA4E2F29AFB53500A85F8A /* Sudoku.h in Sources */ = {isa = PBXBuildFile; fileRef = 29EA4E2E29AFB53500A85F8A /* Sudoku.h */; };
 		29EE296C2990927F00842B6B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EE296B2990927F00842B6B /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,7 @@
 		29EA4E2629AE301000A85F8A /* TimerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimerManager.h; sourceTree = "<group>"; };
 		29EA4E2729AE30DD00A85F8A /* PauseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PauseViewController.h; sourceTree = "<group>"; };
 		29EA4E2829AE30DD00A85F8A /* PauseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PauseViewController.m; sourceTree = "<group>"; };
-		29EA4E2E29AFB53500A85F8A /* Sudoku.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sudoku.m; sourceTree = "<group>"; };
+		29EA4E2E29AFB53500A85F8A /* Sudoku.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sudoku.h; sourceTree = "<group>"; };
 		29EE296A2990927F00842B6B /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		29EE296B2990927F00842B6B /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +89,7 @@
 				29AD4F7929908CE300DB2A16 /* Main.storyboard */,
 				29AD4F7C29908CE400DB2A16 /* Assets.xcassets */,
 				29AD4F7E29908CE400DB2A16 /* LaunchScreen.storyboard */,
-				29EA4E2E29AFB53500A85F8A /* Sudoku.m */,
+				29EA4E2E29AFB53500A85F8A /* Sudoku.h */,
 				29AD4F8129908CE400DB2A16 /* main.m */,
 				29EE296A2990927F00842B6B /* HomeViewController.h */,
 				29EE296B2990927F00842B6B /* HomeViewController.m */,
@@ -176,7 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29AD4F7529908CE300DB2A16 /* GameScene.m in Sources */,
-				29EA4E2F29AFB53500A85F8A /* Sudoku.m in Sources */,
+				29EA4E2F29AFB53500A85F8A /* Sudoku.h in Sources */,
 				29AD4F7829908CE300DB2A16 /* GameViewController.m in Sources */,
 				29AD4F8229908CE400DB2A16 /* main.m in Sources */,
 				2988A548299DBA8700DFB70D /* SudokuViewController.m in Sources */,
