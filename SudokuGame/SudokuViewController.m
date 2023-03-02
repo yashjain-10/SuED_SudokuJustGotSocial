@@ -16,6 +16,9 @@
 @property (nonatomic, assign) NSTimeInterval startTime;
 @property (nonatomic, assign) NSTimeInterval elapsedTime;
 
+@property (nonatomic, assign) NSMutableArray *Grid;
+@property (nonatomic, assign) NSMutableArray *SolnGrid;
+
 @end
 
 @implementation SudokuViewController
@@ -40,16 +43,26 @@ UIButton *button = nil;
 // Temporary function : TO BE DELETED
 - (void)tempfunc
 {
-    for (int i = 0; i < 30; ++i)
+    Sudoku *sudoku = [[Sudoku alloc] init];
+    [sudoku GenerateSudoku];
+    _Grid = [sudoku GetFinalGrid:0];
+    _SolnGrid = [sudoku GetFinalGrid:1];
+    
+    UIButton *tempbutton;
+    for (int i = 0; i < N*N; ++i)
     {
-        int randomNumber = arc4random_uniform(89) + 1;
-        UIButton *tempbutton = [self.view viewWithTag:randomNumber];
+        int gridNum = i;
+        int row = gridNum / N;
+        int col = gridNum % N;
+        
+        if (i == 0)
+            tempbutton = [self.view viewWithTag:89];
+        else
+            tempbutton = [self.view viewWithTag:i];
         [tempbutton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        randomNumber = arc4random_uniform(9) + 1;
-        [tempbutton setTitle:[NSString stringWithFormat:@"%d", randomNumber] forState:UIControlStateNormal];
+        [tempbutton setTitle:[NSString stringWithFormat:@"%@", _Grid[row][col]] forState:UIControlStateNormal];
     }
 }
-//static NSTimeInterval elapsedTime = 0.0;
 
 - (IBAction)goHome:(id)sender
 {
@@ -80,7 +93,6 @@ UIButton *button = nil;
     self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
     self->PauseMenu.hidden = YES;
 }
-
 
 
 - (void)changeColors:(UIColor *)color
@@ -158,16 +170,13 @@ UIButton *button = nil;
         number = numberbutton.currentTitle;
         
         if ([button.titleLabel textColor] != [UIColor blackColor])
-        {
             [button setTitle:number forState:UIControlStateNormal];
-        }
     }
 }
 
 
-- (void)viewDidLoad {
-    
-    
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self->PauseMenu.hidden = YES;
@@ -185,11 +194,7 @@ UIButton *button = nil;
     
     self.startTime = [NSDate timeIntervalSinceReferenceDate];
     self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
-    
-    Sudoku *sudoku = [[Sudoku alloc] init];
-    [sudoku GenerateSudoku];
-    [sudoku PrintSudoku:0];
-    [sudoku PrintSudoku:1];
+
 }
 
 

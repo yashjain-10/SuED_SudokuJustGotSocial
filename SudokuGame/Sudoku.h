@@ -16,6 +16,7 @@ int empty = 0;
 @property (nonatomic, strong) NSMutableArray *SolnGrid;
 @property (nonatomic, strong) NSMutableArray *GuessNum;
 @property (nonatomic, strong) NSMutableArray *GridPos;
+@property (nonatomic, strong) NSMutableArray *GetFinalGrid;
 
 
 
@@ -34,17 +35,18 @@ int empty = 0;
 @implementation Sudoku
 
 // Constructor Function
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
-    if (self) {
+    if (self)
+    {
         // Initialising the Grid to be array of 81 0s
         _Grid = [NSMutableArray arrayWithCapacity:N];
         for (int i = 0; i < N; i++)
         {
             NSMutableArray *row = [NSMutableArray arrayWithCapacity:N];
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < N; j++)
                 [row addObject:@(0)]; // set initial value to 0
-            }
             [_Grid addObject:row];
         }
         
@@ -53,29 +55,25 @@ int empty = 0;
         for (int i = 0; i < N; i++)
         {
             NSMutableArray *row = [NSMutableArray arrayWithCapacity:N];
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < N; j++)
                 [row addObject:@(0)]; // set initial value to 0
-            }
             [_SolnGrid addObject:row];
         }
         
         // Initialising the GuessNum array to be array from 1 - 9
         _GuessNum = [NSMutableArray arrayWithCapacity:N];
-        for (int i = 1; i <= N; i++) {
+        for (int i = 1; i <= N; i++)
             [_GuessNum addObject:@(i)];
-        }
         [self shuffle1D:_GuessNum];
         
         // Initialising GuessPos to be an array of positions from 0 - 88
         _GridPos = [NSMutableArray arrayWithCapacity:N*N];
-        for (int i = 0; i < N*N; i++) {
+        for (int i = 0; i < N*N; i++)
             [_GridPos addObject:@(i)];
-        }
         [self shuffle1D:_GridPos];
         
         _difficultyLevel = 0;
         
-        // Initialize the arrays with values here, if needed
     }
     return self;
 }
@@ -294,6 +292,9 @@ int empty = 0;
         return;
     }
     
+    if (*soln >= 2)
+        return;
+    
     // Try finding the solution with every number possible
     for (int num = 1; num <= N; num++)
     {
@@ -447,6 +448,15 @@ int empty = 0;
 // ------------------------------------ END HERE --------------------------------------
 // ------------------------------------------------------------------------------------
 
+
+- (NSMutableArray *)GetFinalGrid:(int)gridNum
+{
+    if(gridNum == 0)
+        return _Grid;
+    else
+        return _SolnGrid;
+}
+
 - (void)PrintSudoku:(int)gridNum
 {
     for (int i = 0; i < N; i++)
@@ -467,19 +477,6 @@ int empty = 0;
         }
     }
     printf("\n");
-}
-
-
-
-
-
-- (void)Print
-{
-    [self shuffle1D:_GuessNum];
-    for(int i = 0; i < [_GuessNum count]; ++i)
-    {
-        NSLog(@"%@", [_GuessNum objectAtIndex:i]);
-    }
 }
 
 @end
