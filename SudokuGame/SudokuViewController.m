@@ -187,7 +187,9 @@ UIButton *button = nil;
     self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
     
     Sudoku *sudoku = [[Sudoku alloc] init];
-    [sudoku PrintSudoku];
+    [sudoku GenerateSudoku];
+    [sudoku PrintSudoku:0];
+    [sudoku PrintSudoku:1];
 }
 
 

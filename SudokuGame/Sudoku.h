@@ -148,7 +148,6 @@ int empty = 0;
 {
     for (int i = 0; i < N*N; ++i)
     {
-        //NSInteger
         NSNumber *gridNum = _GridPos[i];
         // Lets assume the coordinates like (0,0) , (0,1) ... (8,8)
         // Then every row index will be the grid number divided by N
@@ -291,7 +290,7 @@ int empty = 0;
     // If no empty square can be found, the sudoku is solved
     if (![self FindEmptyLocation:&row :&col])
     {
-        ++soln;
+        ++(*soln);
         return;
     }
     
@@ -329,8 +328,118 @@ int empty = 0;
 }
 
 /*
-  * A helper function to pick random empty locations to add numbers
+  * A helper function to pick random empty locations and add numbers
+  * @returns true when the sudoku is solved
 */
+- (bool)SolveToGenerate
+{
+    int row = 0;
+    int col = 0;
+    if (![self FindEmptyLocation:&row :&col])
+        return true;
+    
+    // Try finding the solution with every number possible
+    for (int i = 0; i < N; i++)
+    {
+        int num = [_GuessNum[i] intValue];
+        if ([self isGridSafe:row :col :num])
+        {
+            _Grid[row][col] = @(num);
+            if ([self SolveToGenerate])
+                return true;
+            _Grid[row][col] = @(empty);
+        }
+    }
+    return false;
+}
+
+/*
+  * Generating the Sudoku
+  * @return A newly created Sudoku
+*/
+- (void)GenerateSudoku
+{
+    NSLog(@"Stage 1 Cleared");
+    // Filling the diagonal boxes
+    for (int idx = 0; idx < 3; idx++)
+        [self FillDiagonalBoxes:idx];
+    
+    NSLog(@"Stage 2 Cleared");
+
+    // shuffling the GridPos to find random positions to enter the numbers
+    [self shuffle1D:_GuessNum];
+
+    // shuffling the GuessNum to get random numbers to enter the grid
+    [self shuffle1D:_GridPos];
+    
+    // Entering random numbers in the random positions in the grid
+    [self SolveToGenerate];
+    
+    NSLog(@"Stage 3 Cleared");
+
+    // Declaring a row and col variable
+    int row, col;
+    
+    // Storing the solution grid in a variable to check for answer later
+    for (row = 0; row < N; row++)
+        for (col = 0; col < N; col++)
+            _SolnGrid[row][col] = _Grid[row][col];
+    
+    NSLog(@"Stage 4 Cleared");
+     
+    // Now deleting elements according to the difficulty level
+    // A variable is required to set a target of the number of elememts to be deleted
+    int target = 0;
+    switch(_difficultyLevel)
+    {
+        case 0 :
+            target = 81 - 32;
+            break;
+        
+        case 1 :
+            target = 81 - 26;
+            break;
+        
+        case 2 :
+            target = 81 - 24;
+            break;
+        
+        case 3 :
+            target = 81 - 17;
+            break;
+        
+        default :
+            target = 81 - 32;
+    }
+    
+    NSLog(@"Stage 5 Cleared");
+    NSLog(@"%d", target);
+    NSLog(@"%d", empty);
+  
+    int count = 0;
+    [self shuffle1D:_GridPos];
+    for (int i = 0; i < N*N && count < target; i++)
+    {
+        NSLog(@"Stage 6 Cleared : %d", i);
+        int index = [_GridPos[i] intValue];
+        int row = index / N;
+        int col = index % N;
+        int temp = [_Grid[row][col] intValue];
+        if (temp != empty)
+        {
+            _Grid[row][col] = @(empty);
+            
+            int soln = 0;
+            [self CountSoln:&soln];
+            if (soln != 1)
+                _Grid[row][col] = @(temp);
+            else
+                count++;
+        }
+    }
+    NSLog(@"%d", count);
+
+}
 
 
 // ------------------------------------------------------------------------------------
@@ -338,10 +447,16 @@ int empty = 0;
 // ------------------------------------ END HERE --------------------------------------
 // ------------------------------------------------------------------------------------
 
-- (void)PrintSudoku {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printf("%d  ", [_Grid[i][j] intValue]);
+- (void)PrintSudoku:(int)gridNum
+{
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            if(gridNum == 0)
+                printf("%d  ", [_Grid[i][j] intValue]);
+            else
+                printf("%d  ", [_SolnGrid[i][j] intValue]);
             if ((j+1) % 3 == 0) {
                 printf("|  ");
             }
@@ -353,6 +468,7 @@ int empty = 0;
     }
     printf("\n");
 }
+
 
 
 
