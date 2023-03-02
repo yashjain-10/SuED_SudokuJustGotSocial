@@ -284,6 +284,9 @@ int empty = 0;
     int row = 0;
     int col = 0;
     
+    if (*soln >= 2)
+        return;
+    
     // Find the next empty square to insert numbers
     // If no empty square can be found, the sudoku is solved
     if (![self FindEmptyLocation:&row :&col])
@@ -291,9 +294,6 @@ int empty = 0;
         ++(*soln);
         return;
     }
-    
-    if (*soln >= 2)
-        return;
     
     // Try finding the solution with every number possible
     for (int num = 1; num <= N; num++)
@@ -336,6 +336,8 @@ int empty = 0;
 {
     int row = 0;
     int col = 0;
+    static int iterationcount = 0;
+    NSLog(@"Stage 3, Iteration Number : %d", ++iterationcount);
     if (![self FindEmptyLocation:&row :&col])
         return true;
     

@@ -58,10 +58,12 @@ UIButton *button = nil;
         if (i == 0)
             tempbutton = [self.view viewWithTag:89];
         else
-            tempbutton = [self.view viewWithTag:i];
+            tempbutton = [self.view viewWithTag:row*10 + col];
         [tempbutton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [tempbutton setTitle:[NSString stringWithFormat:@"%@", _Grid[row][col]] forState:UIControlStateNormal];
+        if ([_Grid[row][col] intValue] != empty)
+            [tempbutton setTitle:[NSString stringWithFormat:@"%@", _Grid[row][col]] forState:UIControlStateNormal];
     }
+    [sudoku PrintSudoku:0];
 }
 
 - (IBAction)goHome:(id)sender
