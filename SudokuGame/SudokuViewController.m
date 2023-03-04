@@ -147,6 +147,24 @@ UIButton *button = nil;
     }
 }
 
+- (void)numberChangeColor:(UIColor *)color
+{
+    UIButton *tempbutton;
+    NSLog(@"button.titleLabel : %@", [button.titleLabel text]);
+    for (int i = 0; i < N*N; ++i)
+    {
+        int gridNum = i;
+        int row = gridNum / N;
+        int col = gridNum % N;
+        if (i == 0)
+            tempbutton = [self.view viewWithTag:89];
+        else
+            tempbutton = [self.view viewWithTag:row*10 + col];
+        if ([tempbutton.titleLabel text]== [button.titleLabel text] && tempbutton.tag != button.tag)
+            tempbutton.backgroundColor = color;
+    }
+}
+
 - (IBAction)addtoBoard:(id)sender
 {
     if ([sender isKindOfClass:[UIButton class]])
@@ -154,10 +172,15 @@ UIButton *button = nil;
         // When another button is pressed,
         // Color the previous selection white
         if (button != nil)
+        {
             [self changeColors:[UIColor whiteColor]];
+            [self numberChangeColor:[UIColor whiteColor]];
+        }
         
         button = (UIButton *)sender;
         [self changeColors:[UIColor lightGrayColor]];
+        if(button.titleLabel != nil)
+            [self numberChangeColor:[UIColor lightGrayColor]];
     }
 }
 
@@ -172,7 +195,10 @@ UIButton *button = nil;
         number = numberbutton.currentTitle;
         
         if ([button.titleLabel textColor] != [UIColor blackColor])
+        {
             [button setTitle:number forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
+        }
     }
 }
 

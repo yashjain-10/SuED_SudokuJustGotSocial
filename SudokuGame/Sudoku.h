@@ -178,6 +178,7 @@ int empty = 0;
     return false;
 }
 
+
 /*
   * Checks if the given number is used in the column
   * @param sudoku grid, column index and the number
@@ -193,6 +194,7 @@ int empty = 0;
     }
     return false;
 }
+
 
 /*
   * Checks if the given number is used in the box
@@ -210,22 +212,18 @@ int empty = 0;
     int colEnd = colStart + 3;
     col = colStart;
     
-    // Loop until the row index goes out of bounds w.r.t the box
-    while (row < rowEnd)
+    for (int i = row; i < rowEnd; i++)
     {
-        NSNumber *gridNum = _Grid[row][col];
-        if ([gridNum intValue] == num)
-            return true;
-        col++;
-        // Check if the column index exceeds the bounds of the box
-        if (col >= colEnd)
+        for (int j = colStart; j < colEnd; j++)
         {
-            col = colStart;
-            row++;
+            NSNumber *gridNum = _Grid[i][j];
+            if ([gridNum intValue] == num)
+                return true;
         }
     }
     return false;
 }
+
 
 /*
   * Checks if numbers can be assigned to the particular square
