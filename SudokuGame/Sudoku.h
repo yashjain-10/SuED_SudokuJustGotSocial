@@ -334,8 +334,8 @@ int empty = 0;
 {
     int row = 0;
     int col = 0;
-    static int iterationcount = 0;
-    NSLog(@"Stage 3, Iteration Number : %d", ++iterationcount);
+    //static int iterationcount = 0;
+    //NSLog(@"Stage 3, Iteration Number : %d", ++iterationcount);
     if (![self FindEmptyLocation:&row :&col])
         return true;
     
@@ -421,7 +421,7 @@ int empty = 0;
     [self shuffle1D:_GridPos];
     for (int i = 0; i < N*N && count < target; i++)
     {
-        NSLog(@"Stage 6 Cleared : %d", i);
+        //NSLog(@"Stage 6 Cleared : %d", i);
         int index = [_GridPos[i] intValue];
         int row = index / N;
         int col = index % N;

@@ -29,19 +29,38 @@ UIButton *button = nil;
 - (void)setButtonTitles
 {
     [number1 setTitle:@"1" forState:UIControlStateNormal];
+    number1.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    
     [number2 setTitle:@"2" forState:UIControlStateNormal];
+    number2.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    
     [number3 setTitle:@"3" forState:UIControlStateNormal];
+    number3.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    
     [number4 setTitle:@"4" forState:UIControlStateNormal];
+    number4.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    
     [number5 setTitle:@"5" forState:UIControlStateNormal];
+    number5.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    
     [number6 setTitle:@"6" forState:UIControlStateNormal];
+    number6.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    
     [number7 setTitle:@"7" forState:UIControlStateNormal];
+    number7.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    
     [number8 setTitle:@"8" forState:UIControlStateNormal];
+    number8.titleLabel.font = [UIFont systemFontOfSize:24.0];
+    
     [number9 setTitle:@"9" forState:UIControlStateNormal];
+    number9.titleLabel.font = [UIFont systemFontOfSize:24.0];
 }
 
 
-// Temporary function : TO BE DELETED
-- (void)tempfunc
+/*
+ * A function to load the sudoku into the table
+ */
+- (void)sudokuLoad
 {
     Sudoku *sudoku = [[Sudoku alloc] init];
     [sudoku GenerateSudoku];
@@ -60,12 +79,18 @@ UIButton *button = nil;
         else
             tempbutton = [self.view viewWithTag:row*10 + col];
         [tempbutton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        tempbutton.titleLabel.font = [UIFont systemFontOfSize:25.0];
+        
         if ([_Grid[row][col] intValue] != empty)
             [tempbutton setTitle:[NSString stringWithFormat:@"%@", _Grid[row][col]] forState:UIControlStateNormal];
     }
     [sudoku PrintSudoku:0];
 }
 
+/*
+ * A function for the home button
+ * Takes the user back home
+ */
 - (IBAction)goHome:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -74,7 +99,9 @@ UIButton *button = nil;
     
 }
 
-// For Timer Functions
+/*
+ * Timer Function to calculate the elapsed time of the sudoku
+ */
 - (void)timerFn
 {
     //elapsedTime += 1.0;
@@ -85,11 +112,19 @@ UIButton *button = nil;
     timer.text = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
 }
 
+/*
+ * A function for the paused button
+ * Stops the timer as well
+ */
 - (IBAction)pauseButtonPressed:(id)sender {
     [self.timerVar invalidate];
     self->PauseMenu.hidden = NO;
 }
 
+/*
+ * A function for the Resume button
+ * Resumes the timer as well
+ */
 - (IBAction)resumeButtonPressed:(id)sender {
     self.startTime = [NSDate timeIntervalSinceReferenceDate] - self.elapsedTime;
     self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
@@ -97,6 +132,12 @@ UIButton *button = nil;
 }
 
 
+/*
+ * A function to change the colors of the row and column
+ * of the box selected
+ * Also responsible for undoing the same function
+ * @param : the color to be used to change the color of the boxes
+ */
 - (void)changeColors:(UIColor *)color
 {
     // Adding Borders to the button
@@ -147,6 +188,11 @@ UIButton *button = nil;
     }
 }
 
+/*
+ * A function to change the color of all the boxes
+ * that contains the same number as the one user tapped
+ * @param : The color to be used to color the row and col
+ */
 - (void)numberChangeColor:(UIColor *)color
 {
     UIButton *tempbutton;
@@ -165,6 +211,9 @@ UIButton *button = nil;
     }
 }
 
+/*
+ * The functions to add the numbers to the board
+ */
 - (IBAction)addtoBoard:(id)sender
 {
     if ([sender isKindOfClass:[UIButton class]])
@@ -179,12 +228,15 @@ UIButton *button = nil;
         
         button = (UIButton *)sender;
         [self changeColors:[UIColor lightGrayColor]];
-        if(button.titleLabel != nil)
+        if([button.titleLabel text] != nil)
             [self numberChangeColor:[UIColor lightGrayColor]];
     }
 }
 
-
+/*
+ * A function to select the numbers from the bottom row
+ * Which gets further added to the board
+ */
 - (IBAction)numberSelector:(id)sender
 {
     if ([sender isKindOfClass:[UIButton class]])
@@ -197,7 +249,7 @@ UIButton *button = nil;
         if ([button.titleLabel textColor] != [UIColor blackColor])
         {
             [button setTitle:number forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor systemTealColor] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor tintColor] forState:UIControlStateNormal];
         }
     }
 }
@@ -206,20 +258,19 @@ UIButton *button = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    // Hiding thr pause menu in the beginning
     self->PauseMenu.hidden = YES;
     
-    // Do any additional setup after loading the view.
+    // Setting the nutton titles of the bottom row
     [self setButtonTitles];
     
-    [self tempfunc];
+    // Integrating the sudoku to the board
+    [self sudokuLoad];
     
-    
+    // Home button
     [Home addTarget:self action:@selector(goHome:) forControlEvents:UIControlEventTouchUpInside];
     
-    //elapsedTime = 0.0;
-    //self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
-    
+    // Starts the time
     self.startTime = [NSDate timeIntervalSinceReferenceDate];
     self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
 
