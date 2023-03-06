@@ -211,6 +211,7 @@ UIButton *button = nil;
     }
 }
 
+
 /*
  * The functions to add the numbers to the board
  */
