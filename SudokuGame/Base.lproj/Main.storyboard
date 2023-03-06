@@ -1643,6 +1643,47 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XnQ-um-uOR">
+                                <rect key="frame" x="0.0" y="722" width="393" height="53"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mG0-OT-OG1">
+                                        <rect key="frame" x="0.0" y="0.0" width="191.66666666666666" height="53"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" imagePlacement="top" titleAlignment="automatic">
+                                            <imageReference key="image" image="eraser" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Erase">
+                                                    <attributes>
+                                                        <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nr3-uw-cWg">
+                                        <rect key="frame" x="201.66666666666663" y="0.0" width="191.33333333333337" height="53"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" imagePlacement="top" imagePadding="0.0" titleAlignment="automatic">
+                                            <imageReference key="image" image="lightbulb" catalog="system" symbolScale="large" variableValue="0.0"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Hint">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D77-yR-IB6">
                                 <rect key="frame" x="16" y="191" width="361" height="548"/>
                                 <subviews>
@@ -1695,17 +1736,21 @@
                             <constraint firstItem="gRP-T5-BBe" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" constant="136" id="M5k-mg-xrx"/>
                             <constraint firstItem="D77-yR-IB6" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" constant="16" id="R5H-9y-KiF"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="D77-yR-IB6" secondAttribute="bottom" constant="79" id="US7-pI-uxA"/>
+                            <constraint firstItem="XnQ-um-uOR" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="aTI-W2-GFm"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="avW-MG-qao" secondAttribute="bottom" constant="690" id="dFv-9v-hl8"/>
                             <constraint firstItem="gRP-T5-BBe" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="bottom" constant="20" id="do5-iL-dXk"/>
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="e2k-P5-MSG"/>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="bottom" constant="102" id="fX8-wR-MPP"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="trailing" secondItem="gRP-T5-BBe" secondAttribute="trailing" constant="136" id="ipO-UN-aon"/>
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="jJT-Ld-6oX"/>
+                            <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="XnQ-um-uOR" secondAttribute="bottom" constant="43" id="lc8-1s-dCR"/>
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" id="lr4-Ko-srZ"/>
+                            <constraint firstItem="XnQ-um-uOR" firstAttribute="top" secondItem="wed-Hy-fC0" secondAttribute="bottom" constant="14" id="qDq-Dn-15p"/>
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="top" secondItem="TBe-5X-djw" secondAttribute="bottom" constant="25" id="rBM-Sr-r5r"/>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="bottom" constant="102" id="rmi-ct-4AD"/>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="top" secondItem="gRP-T5-BBe" secondAttribute="bottom" constant="61" id="sDJ-zn-Ued"/>
                             <constraint firstItem="avW-MG-qao" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="sDM-Xz-9x0"/>
+                            <constraint firstItem="XnQ-um-uOR" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" id="tJr-Hd-ukX"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="wed-Hy-fC0" secondAttribute="bottom" constant="110" id="tKs-oZ-j1s"/>
                             <constraint firstItem="D77-yR-IB6" firstAttribute="top" secondItem="gRP-T5-BBe" secondAttribute="bottom" constant="22" id="u7F-kk-dmQ"/>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="v63-ra-rN1"/>
@@ -1714,6 +1759,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZTf-es-02E"/>
                     <connections>
+                        <outlet property="Eraser" destination="mG0-OT-OG1" id="fkS-NB-fP9"/>
+                        <outlet property="Hint" destination="nr3-uw-cWg" id="bhN-8R-Qwa"/>
                         <outlet property="Home" destination="3i4-Ym-VNw" id="6jO-mi-vN9"/>
                         <outlet property="Pause" destination="Z6B-kf-We8" id="i9M-Nt-sjm"/>
                         <outlet property="PauseMenu" destination="D77-yR-IB6" id="SaC-tS-IgQ"/>
@@ -1862,7 +1909,9 @@
     <resources>
         <image name="arrowshape.backward" catalog="system" width="128" height="104"/>
         <image name="chart.bar" catalog="system" width="128" height="89"/>
+        <image name="eraser" catalog="system" width="128" height="119"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="lightbulb" catalog="system" width="92" height="128"/>
         <image name="pause.fill" catalog="system" width="117" height="128"/>
         <image name="trophy" catalog="system" width="128" height="128"/>
         <systemColor name="labelColor">

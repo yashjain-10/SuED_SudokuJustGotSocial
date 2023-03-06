@@ -255,6 +255,43 @@ UIButton *button = nil;
     }
 }
 
+/*
+ * Eraser Function
+ * @param : The button who's value is to be deleted/erased
+ */
+- (void)EraserFunction:(id)sender
+{
+    if ([sender isKindOfClass:[UIButton class]])
+    {
+        if ([button.titleLabel text] != nil && [button.titleLabel textColor] != [UIColor blackColor])
+            [button setTitle:nil forState:UIControlStateNormal];
+    }
+}
+
+/*
+ * A hint function
+ * @param : The button who's value is to be revealed
+ */
+- (void)HintFunction:(id)sender
+{
+    if ([sender isKindOfClass:[UIButton class]])
+    {
+        int index = (int)button.tag;
+        int row,col;
+        if (index == 89)
+        {
+            row = 0;
+            col = 0;
+        }
+        else
+        {
+            row = index / N;
+            col = index % N;
+        }
+        [button setTitle:_SolnGrid[row][col] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+}
 
 - (void)viewDidLoad
 {
