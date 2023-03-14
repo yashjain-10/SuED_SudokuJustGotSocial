@@ -441,7 +441,6 @@ int Empty = 0;
                 count++;
         }
     }
-    NSLog(@"%d", count);
 }
 
 

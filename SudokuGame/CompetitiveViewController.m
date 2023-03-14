@@ -15,7 +15,7 @@
 @property (nonatomic, assign) NSTimeInterval elapsedTime;
 
 @property (nonatomic, assign) NSMutableArray *Grid;
-@property (nonatomic, assign) NSMutableArray *SolnGrid;
+@property (nonatomic, strong) NSMutableArray *SolnGrid;
 
 @end
 
@@ -232,6 +232,7 @@ UIButton *Button = nil;
             [self numberChangeColor:[UIColor lightGrayColor]];
     }
 }
+
 
 /*
  * A function to select the numbers from the bottom row
