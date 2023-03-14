@@ -1,29 +1,29 @@
 //
-//  SudokuViewController.m
+//  CompetitiveViewController.m
 //  SudokuGame
 //
-//  Created by Yash Jain on 2/16/23.
+//  Created by Yash Jain on 3/14/23.
 //
 
-#import "SudokuViewController.h"
-#import "TimerManager.h"
-#import "Sudoku.h"
+#import "CompetitiveViewController.h"
+#import "SudokuMultiplayer.h"
 
-@interface SudokuViewController ()
+@interface CompetitiveViewController ()
 
 @property (nonatomic,strong) NSTimer *timerVar;
 @property (nonatomic, assign) NSTimeInterval startTime;
 @property (nonatomic, assign) NSTimeInterval elapsedTime;
 
 @property (nonatomic, assign) NSMutableArray *Grid;
-@property (nonatomic, strong) NSMutableArray *SolnGrid;
+@property (nonatomic, assign) NSMutableArray *SolnGrid;
 
 @end
 
-@implementation SudokuViewController
+@implementation CompetitiveViewController
 
-NSString *number;
-UIButton *button = nil;
+
+NSString *Number;
+UIButton *Button = nil;
 
 - (void)setButtonTitles
 {
@@ -61,18 +61,17 @@ UIButton *button = nil;
  */
 - (void)sudokuLoad
 {
-    Sudoku *sudoku = [[Sudoku alloc] init];
+    SudokuMultiplayer *sudoku = [[SudokuMultiplayer alloc] init];
     [sudoku GenerateSudoku];
-    _Grid = [sudoku GetFinalGrid];
-    
-    _SolnGrid = [sudoku GetSolnGrid];
+    _Grid = [sudoku GetFinalGrid:0];
+    _SolnGrid = [sudoku GetFinalGrid:1];
     
     UIButton *tempbutton;
-    for (int i = 0; i < N*N; ++i)
+    for (int i = 0; i < X*X; ++i)
     {
         int gridNum = i;
-        int row = gridNum / N;
-        int col = gridNum % N;
+        int row = gridNum / X;
+        int col = gridNum % X;
         
         if (i == 0)
             tempbutton = [self.view viewWithTag:89];
@@ -81,14 +80,14 @@ UIButton *button = nil;
         [tempbutton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         tempbutton.titleLabel.font = [UIFont systemFontOfSize:25.0];
         
-        if ([_Grid[row][col] intValue] != empty)
+        if ([_Grid[row][col] intValue] != Empty)
             [tempbutton setTitle:[NSString stringWithFormat:@"%@", _Grid[row][col]] forState:UIControlStateNormal];
     }
     [sudoku PrintSudoku:0];
 }
 
 /*
- * A function for the home button
+ * A function for the home Button
  * Takes the user back home
  */
 - (IBAction)goHome:(id)sender
@@ -113,7 +112,7 @@ UIButton *button = nil;
 }
 
 /*
- * A function for the paused button
+ * A function for the paused Button
  * Stops the timer as well
  */
 - (IBAction)pauseButtonPressed:(id)sender {
@@ -122,7 +121,7 @@ UIButton *button = nil;
 }
 
 /*
- * A function for the Resume button
+ * A function for the Resume Button
  * Resumes the timer as well
  */
 - (IBAction)resumeButtonPressed:(id)sender {
@@ -140,19 +139,19 @@ UIButton *button = nil;
  */
 - (void)changeColors:(UIColor *)color
 {
-    // Adding Borders to the button
-    NSInteger tag = button.tag;
+    // Adding Borders to the Button
+    NSInteger tag = Button.tag;
     if (color != [UIColor whiteColor])
     {
-        button.layer.borderWidth = 2.0f;
+        Button.layer.borderWidth = 2.0f;
         // Set the stroke color
-        button.layer.borderColor = [UIColor tintColor].CGColor;
+        Button.layer.borderColor = [UIColor tintColor].CGColor;
     }
     else
     {
-        button.layer.borderWidth = 0.0f;
+        Button.layer.borderWidth = 0.0f;
         // Set the stroke color
-        button.layer.borderColor = [UIColor whiteColor].CGColor;
+        Button.layer.borderColor = [UIColor whiteColor].CGColor;
     }
     if (tag == 89)
         tag = 0;
@@ -190,22 +189,23 @@ UIButton *button = nil;
 
 /*
  * A function to change the color of all the boxes
- * that contains the same number as the one user tapped
+ * that contains the same Number as the one user tapped
  * @param : The color to be used to color the row and col
  */
 - (void)numberChangeColor:(UIColor *)color
 {
     UIButton *tempbutton;
-    for (int i = 0; i < N*N; ++i)
+    NSLog(@"Button.titleLabel : %@", [Button.titleLabel text]);
+    for (int i = 0; i < X*X; ++i)
     {
         int gridNum = i;
-        int row = gridNum / N;
-        int col = gridNum % N;
+        int row = gridNum / X;
+        int col = gridNum % X;
         if (i == 0)
             tempbutton = [self.view viewWithTag:89];
         else
             tempbutton = [self.view viewWithTag:row*10 + col];
-        if ([tempbutton.titleLabel text]== [button.titleLabel text] && tempbutton.tag != button.tag && ![[tempbutton.titleLabel text] isEqualToString:@" "])
+        if ([tempbutton.titleLabel text]== [Button.titleLabel text] && tempbutton.tag != Button.tag)
             tempbutton.backgroundColor = color;
     }
 }
@@ -218,18 +218,17 @@ UIButton *button = nil;
 {
     if ([sender isKindOfClass:[UIButton class]])
     {
-        // When another button is pressed,
+        // When another Button is pressed,
         // Color the previous selection white
-        if (button != nil)
+        if (Button != nil)
         {
             [self changeColors:[UIColor whiteColor]];
             [self numberChangeColor:[UIColor whiteColor]];
         }
         
-        button = (UIButton *)sender;
-        NSLog(@"%@", button.currentTitle);
+        Button = (UIButton *)sender;
         [self changeColors:[UIColor lightGrayColor]];
-        if([button.titleLabel text] != nil)
+        if([Button.titleLabel text] != nil)
             [self numberChangeColor:[UIColor lightGrayColor]];
     }
 }
@@ -243,44 +242,40 @@ UIButton *button = nil;
     if ([sender isKindOfClass:[UIButton class]])
     {
         UIButton *numberbutton = (UIButton *)sender;
-        //NSLog(@"%@", numberbutton.currentTitle);
-        //number = @"9";
-        number = numberbutton.currentTitle;
+        NSLog(@"%@", numberbutton.currentTitle);
+        //Number = @"9";
+        Number = numberbutton.currentTitle;
         
-        if ([button.titleLabel textColor] != [UIColor blackColor])
+        if ([Button.titleLabel textColor] != [UIColor blackColor])
         {
-            [button setTitle:number forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor tintColor] forState:UIControlStateNormal];
+            [Button setTitle:Number forState:UIControlStateNormal];
+            [Button setTitleColor:[UIColor tintColor] forState:UIControlStateNormal];
         }
     }
 }
 
 /*
  * Eraser Function
- * @param : The button who's value is to be deleted/erased
+ * @param : The Button who's value is to be deleted/erased
  */
-- (IBAction)EraserFunction:(id)sender
+- (void)EraserFunction:(id)sender
 {
     if ([sender isKindOfClass:[UIButton class]])
     {
-        if ([button.titleLabel text] != nil && [button.titleLabel textColor] != [UIColor blackColor])
-        {
-            NSNumber *xyz = nil;
-            [button setTitle:[NSString stringWithFormat:@"%@", xyz] forState:UIControlStateNormal];
-            [button setTitle:@" " forState:UIControlStateNormal];
-        }
+        if ([Button.titleLabel text] != nil && [Button.titleLabel textColor] != [UIColor blackColor])
+            [Button setTitle:nil forState:UIControlStateNormal];
     }
 }
 
 /*
  * A hint function
- * @param : The button who's value is to be revealed
+ * @param : The Button who's value is to be revealed
  */
-- (IBAction)HintFn:(id)sender
+- (void)HintFunction:(id)sender
 {
-    if ([sender isKindOfClass:[UIButton class]] && [button.titleLabel textColor] != [UIColor blackColor])
+    if ([sender isKindOfClass:[UIButton class]])
     {
-        int index = (int)button.tag;
+        int index = (int)Button.tag;
         int row,col;
         if (index == 89)
         {
@@ -289,11 +284,11 @@ UIButton *button = nil;
         }
         else
         {
-            row = index / 10;
-            col = index % 10;
+            row = index / X;
+            col = index % X;
         }
-        [button setTitle:[NSString stringWithFormat:@"%@", _SolnGrid[row][col]] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [Button setTitle:_SolnGrid[row][col] forState:UIControlStateNormal];
+        [Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
 }
 
@@ -309,7 +304,7 @@ UIButton *button = nil;
     // Integrating the sudoku to the board
     [self sudokuLoad];
     
-    // Home button
+    // Home Button
     [Home addTarget:self action:@selector(goHome:) forControlEvents:UIControlEventTouchUpInside];
     
     // Starts the time
@@ -328,5 +323,6 @@ UIButton *button = nil;
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

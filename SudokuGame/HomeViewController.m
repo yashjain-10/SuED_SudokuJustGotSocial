@@ -13,9 +13,26 @@
 
 @implementation HomeViewController
 
+- (IBAction)playOnlineButton:(id)sender
+{
+    self->playOnlineMenu.hidden = NO;
+}
+
+- (IBAction)CompetitiveButton:(id)sender
+{
+    self->playOnlineMenu.hidden = YES;
+}
+
+- (IBAction)CollabButton:(id)sender
+{
+    self->playOnlineMenu.hidden = YES;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self->playOnlineMenu.hidden = YES;
 }
 
 /*
