@@ -7,6 +7,7 @@
 
 #import "CompetitiveViewController.h"
 #import "SudokuMultiplayer.h"
+#import <GameKit/GameKit.h>
 
 @interface CompetitiveViewController ()
 
@@ -259,39 +260,64 @@ UIButton *Button = nil;
  * Eraser Function
  * @param : The Button who's value is to be deleted/erased
  */
-- (void)EraserFunction:(id)sender
+- (IBAction)EraserFunction:(id)sender
 {
     if ([sender isKindOfClass:[UIButton class]])
     {
         if ([Button.titleLabel text] != nil && [Button.titleLabel textColor] != [UIColor blackColor])
-            [Button setTitle:nil forState:UIControlStateNormal];
+        {
+            NSNumber *xyz = nil;
+            [Button setTitle:[NSString stringWithFormat:@"%@", xyz] forState:UIControlStateNormal];
+            [Button setTitle:@" " forState:UIControlStateNormal];
+        }
     }
 }
 
 /*
- * A hint function
- * @param : The Button who's value is to be revealed
+ * Multiplayer function
+ * Aythenticates the user with Game Center
+ * Finds a match for the user
+ * @param : void
+ * @return :    0 if authentication failed
+ *              1 if match making failed
+ *              2 if match found
  */
-- (void)HintFunction:(id)sender
+- (void)multiPlayerFn
 {
-    if ([sender isKindOfClass:[UIButton class]])
+    [GKLocalPlayer localPlayer].authenticateHandler = ^(UIViewController *viewController, NSError *error)
     {
-        int index = (int)Button.tag;
-        int row,col;
-        if (index == 89)
+        if (viewController != nil)
         {
-            row = 0;
-            col = 0;
+            // Show the Game Center login view controller
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+        else if ([GKLocalPlayer localPlayer].authenticated)
+        {
+            // The player is authenticated and ready to play
+            NSLog(@"Player authenticated");
         }
         else
         {
-            row = index / X;
-            col = index % X;
+            // Authentication failed
+            NSLog(@"Authentication failed: %@", error);
         }
-        [Button setTitle:_SolnGrid[row][col] forState:UIControlStateNormal];
-        [Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
+    };
+    
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.minPlayers = 2;
+    request.maxPlayers = 4;
+    request.defaultNumberOfPlayers = 2;
+
+    [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error) {
+        if (match != nil) {
+            // The match was found, start the game
+        } else {
+            // Matchmaking failed
+            NSLog(@"Matchmaking failed: %@", error);
+        }
+    }];
 }
+
 
 - (void)viewDidLoad
 {
@@ -301,6 +327,9 @@ UIButton *Button = nil;
     
     // Setting the nutton titles of the bottom row
     [self setButtonTitles];
+    
+    // Calling multiplayerfn
+    //[self multiPlayerFn];
     
     // Integrating the sudoku to the board
     [self sudokuLoad];
@@ -313,17 +342,6 @@ UIButton *Button = nil;
     self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
 
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
 @end

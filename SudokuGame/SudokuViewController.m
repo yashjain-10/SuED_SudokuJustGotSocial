@@ -211,6 +211,27 @@ UIButton *button = nil;
     }
 }
 
+/*
+ * Check for mistake
+ * @param : Button that was pressed
+ */
+- (void)CheckForMistake
+{
+    NSInteger tag = button.tag;
+    int row = 0;
+    int col = 0;
+    if (tag != 89)
+    {
+        row = (int)tag / 10;
+        col = (int)tag % 10;
+    }
+    NSLog(@"Row : %d", row);
+    NSLog(@"Col : %d", col);
+    NSLog(@"Soln:%@", _SolnGrid[row][col]);
+    NSLog(@"Tag : %ld", tag);
+    if (number != [NSString stringWithFormat:@"%@", _SolnGrid[row][col]])
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+}
 
 /*
  * The functions to add the numbers to the board
@@ -252,6 +273,7 @@ UIButton *button = nil;
         {
             [button setTitle:number forState:UIControlStateNormal];
             [button setTitleColor:[UIColor tintColor] forState:UIControlStateNormal];
+            [self CheckForMistake];
         }
     }
 }
