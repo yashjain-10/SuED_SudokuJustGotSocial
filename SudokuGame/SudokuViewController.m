@@ -225,11 +225,7 @@ UIButton *button = nil;
         row = (int)tag / 10;
         col = (int)tag % 10;
     }
-    NSLog(@"Row : %d", row);
-    NSLog(@"Col : %d", col);
-    NSLog(@"Soln:%@", _SolnGrid[row][col]);
-    NSLog(@"Tag : %ld", tag);
-    if (number != [NSString stringWithFormat:@"%@", _SolnGrid[row][col]])
+    if ([NSString stringWithFormat:@"%@", number] != [NSString stringWithFormat:@"%@", _SolnGrid[row][col]])
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
