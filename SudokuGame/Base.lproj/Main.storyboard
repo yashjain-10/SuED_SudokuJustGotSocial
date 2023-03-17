@@ -40,13 +40,14 @@
                                     <attributedString key="attributedTitle">
                                         <fragment content="New Game">
                                             <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <font key="NSFont" size="24" name="Verdana-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                    <color key="baseBackgroundColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="7Gp-aE-gad" kind="popoverPresentation" popoverAnchorView="Udx-9R-nBZ" id="Dmg-3f-lh4">
@@ -68,7 +69,7 @@
                                         </fragment>
                                     </attributedString>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
+                                    <color key="baseBackgroundColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="playOnlineButton:" destination="1Hj-mm-W96" eventType="touchUpInside" id="SQx-MZ-19X"/>
@@ -86,13 +87,14 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Competitive">
                                                     <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <font key="NSFont" size="24" name="Verdana-Bold"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
-                                            <color key="baseForegroundColor" systemColor="tintColor"/>
-                                            <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="CompetitiveButton:" destination="1Hj-mm-W96" eventType="touchUpInside" id="bqJ-90-ta0"/>
@@ -112,19 +114,19 @@
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
-                                            <color key="baseForegroundColor" systemColor="tintColor"/>
-                                            <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="CollabButton:" destination="1Hj-mm-W96" eventType="touchUpInside" id="wh0-HK-qFd"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RBC-bN-Oim"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="RBC-bN-Oim" firstAttribute="bottom" secondItem="Udx-9R-nBZ" secondAttribute="bottom" constant="315" id="Pse-R1-0tg"/>
                             <constraint firstItem="RBC-bN-Oim" firstAttribute="trailing" secondItem="Udx-9R-nBZ" secondAttribute="trailing" constant="88" id="int-B9-lMZ"/>
@@ -151,9 +153,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="5sl-h0-mgt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
-                        <color key="tintColor" systemColor="systemYellowColor"/>
-                        <color key="separatorColor" red="0.99651354550000004" green="0.89072316880000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexColor" systemColor="labelColor"/>
                         <color key="sectionIndexBackgroundColor" systemColor="systemCyanColor"/>
                         <color key="sectionIndexTrackingBackgroundColor" systemColor="labelColor"/>
@@ -172,7 +174,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Easy">
                                                             <attributes>
-                                                                <color key="NSColor" red="0.99651354550000004" green="0.89072316880000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <font key="NSFont" size="24" name="Ubuntu"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -181,6 +183,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="tintColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="lWo-hX-TYX" firstAttribute="leading" secondItem="9gK-t0-wBe" secondAttribute="leading" constant="20" symbolic="YES" id="45m-Xn-5vi"/>
                                                 <constraint firstAttribute="trailing" secondItem="lWo-hX-TYX" secondAttribute="trailing" constant="-0.33000000000000002" id="bNc-9A-0OT"/>
@@ -188,7 +191,7 @@
                                                 <constraint firstItem="lWo-hX-TYX" firstAttribute="top" secondItem="9gK-t0-wBe" secondAttribute="top" constant="11" id="kue-vq-bi6"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.91873025890000004" green="0.26943236590000003" blue="0.35292625430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <segue destination="eXl-cX-IrE" kind="presentation" modalPresentationStyle="fullScreen" id="JO8-a0-g2W"/>
                                         </connections>
@@ -205,7 +208,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Medium">
                                                             <attributes>
-                                                                <color key="NSColor" red="0.99651354550000004" green="0.89072316880000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <font key="NSFont" size="24" name="Ubuntu"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -221,7 +224,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="EUI-5y-m1N" secondAttribute="trailing" constant="5" id="ZNO-vq-uEB"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.91873025890000004" green="0.26943236590000003" blue="0.35292625430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <segue destination="eXl-cX-IrE" kind="presentation" modalPresentationStyle="fullScreen" id="G0o-SA-LK1"/>
                                         </connections>
@@ -238,7 +241,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Hard">
                                                             <attributes>
-                                                                <color key="NSColor" red="0.99651354550000004" green="0.89072316880000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <font key="NSFont" size="24" name="Ubuntu"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -254,7 +257,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Fzw-aS-SeK" secondAttribute="bottom" constant="12" id="qaN-91-DC3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.91873025890000004" green="0.26943236590000003" blue="0.35292625430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <segue destination="eXl-cX-IrE" kind="presentation" modalPresentationStyle="fullScreen" id="f4v-0s-edu"/>
                                         </connections>
@@ -271,7 +274,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Expert">
                                                             <attributes>
-                                                                <color key="NSColor" red="0.99651354550000004" green="0.89072316880000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <font key="NSFont" size="24" name="Ubuntu"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -287,7 +290,7 @@
                                                 <constraint firstItem="4v6-zb-L8U" firstAttribute="leading" secondItem="NiR-Ks-nSX" secondAttribute="leading" constant="25" id="xVL-li-EO5"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.91873025890000004" green="0.26943236590000003" blue="0.35292625430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <segue destination="eXl-cX-IrE" kind="presentation" modalPresentationStyle="fullScreen" id="vyL-wA-Xd8"/>
                                         </connections>
@@ -346,7 +349,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.46999900361448133" green="0.13591608880784392" blue="0.17630222877249505" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Z6B-kf-We8" secondAttribute="trailing" constant="6" id="1fE-AT-UcO"/>
                                     <constraint firstAttribute="bottom" secondItem="Z6B-kf-We8" secondAttribute="bottom" constant="8" id="3bQ-Ws-BWx"/>
@@ -1704,19 +1707,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRP-T5-BBe">
-                                <rect key="frame" x="136" y="148" width="121" height="21"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="00:00">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="22" name="Ubuntu"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XnQ-um-uOR">
                                 <rect key="frame" x="0.0" y="722" width="393" height="53"/>
                                 <subviews>
@@ -1730,13 +1720,13 @@
                                                 <fragment content="Erase">
                                                     <attributes>
                                                         <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <font key="NSFont" size="12" name="Helvetica"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
-                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="baseForegroundColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="EraserFunction:" destination="eXl-cX-IrE" eventType="touchUpInside" id="eQZ-z9-MK3"/>
@@ -1750,13 +1740,13 @@
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Hint">
                                                     <attributes>
-                                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <font key="NSFont" size="12" name="Helvetica"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
-                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="baseForegroundColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="HintFn:" destination="eXl-cX-IrE" eventType="touchUpInside" id="ocA-wu-IhX"/>
@@ -1799,9 +1789,22 @@
                                     <constraint firstAttribute="bottom" secondItem="Y7q-Hg-SKA" secondAttribute="bottom" constant="251" id="nfq-dY-JqO"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRP-T5-BBe">
+                                <rect key="frame" x="141" y="148" width="110" height="42"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="00:00">
+                                        <attributes>
+                                            <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="28" name="Verdana"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WPn-3p-pNy"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" id="42v-lZ-Ufz"/>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="4PO-DP-evF"/>
@@ -1814,30 +1817,30 @@
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="top" secondItem="TBe-5X-djw" secondAttribute="bottom" constant="25" id="Bri-TB-g7X"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="wed-Hy-fC0" secondAttribute="bottom" constant="110" id="CF3-ex-NFb"/>
                             <constraint firstItem="avW-MG-qao" firstAttribute="top" secondItem="tjl-4B-qxe" secondAttribute="top" id="EcQ-5r-gKx"/>
-                            <constraint firstItem="gRP-T5-BBe" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" constant="136" id="M5k-mg-xrx"/>
+                            <constraint firstItem="TBe-5X-djw" firstAttribute="top" secondItem="gRP-T5-BBe" secondAttribute="bottom" constant="40" id="KwR-CA-Z8p"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="XnQ-um-uOR" secondAttribute="bottom" constant="43" id="NXn-cd-fiG"/>
                             <constraint firstItem="D77-yR-IB6" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" constant="16" id="R5H-9y-KiF"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="D77-yR-IB6" secondAttribute="bottom" constant="79" id="US7-pI-uxA"/>
                             <constraint firstItem="XnQ-um-uOR" firstAttribute="top" secondItem="wed-Hy-fC0" secondAttribute="bottom" constant="14" id="UZw-ih-a83"/>
                             <constraint firstItem="XnQ-um-uOR" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="aTI-W2-GFm"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="avW-MG-qao" secondAttribute="bottom" constant="690" id="dFv-9v-hl8"/>
-                            <constraint firstItem="gRP-T5-BBe" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="bottom" constant="20" id="do5-iL-dXk"/>
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="e2k-P5-MSG"/>
+                            <constraint firstItem="WPn-3p-pNy" firstAttribute="trailing" secondItem="gRP-T5-BBe" secondAttribute="trailing" constant="142" id="fJf-1B-tU9"/>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="bottom" constant="102" id="fX8-wR-MPP"/>
-                            <constraint firstItem="WPn-3p-pNy" firstAttribute="trailing" secondItem="gRP-T5-BBe" secondAttribute="trailing" constant="136" id="ipO-UN-aon"/>
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="jJT-Ld-6oX"/>
+                            <constraint firstItem="gRP-T5-BBe" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="bottom" constant="20" id="lLL-0Z-Tnv"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="XnQ-um-uOR" secondAttribute="bottom" constant="43" id="lc8-1s-dCR"/>
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" id="lr4-Ko-srZ"/>
                             <constraint firstItem="XnQ-um-uOR" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="lvh-cN-Jl2"/>
                             <constraint firstItem="XnQ-um-uOR" firstAttribute="top" secondItem="wed-Hy-fC0" secondAttribute="bottom" constant="14" id="qDq-Dn-15p"/>
                             <constraint firstItem="wed-Hy-fC0" firstAttribute="top" secondItem="TBe-5X-djw" secondAttribute="bottom" constant="25" id="rBM-Sr-r5r"/>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="bottom" constant="102" id="rmi-ct-4AD"/>
-                            <constraint firstItem="TBe-5X-djw" firstAttribute="top" secondItem="gRP-T5-BBe" secondAttribute="bottom" constant="61" id="sDJ-zn-Ued"/>
                             <constraint firstItem="avW-MG-qao" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="sDM-Xz-9x0"/>
                             <constraint firstItem="XnQ-um-uOR" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" id="tJr-Hd-ukX"/>
                             <constraint firstItem="WPn-3p-pNy" firstAttribute="bottom" secondItem="wed-Hy-fC0" secondAttribute="bottom" constant="110" id="tKs-oZ-j1s"/>
                             <constraint firstItem="D77-yR-IB6" firstAttribute="top" secondItem="gRP-T5-BBe" secondAttribute="bottom" constant="22" id="u7F-kk-dmQ"/>
                             <constraint firstItem="TBe-5X-djw" firstAttribute="trailing" secondItem="WPn-3p-pNy" secondAttribute="trailing" id="v63-ra-rN1"/>
+                            <constraint firstItem="gRP-T5-BBe" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" constant="141" id="xus-Bw-yw0"/>
                             <constraint firstItem="avW-MG-qao" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" id="zxs-wO-mgZ"/>
                         </constraints>
                         <variation key="default">
@@ -1984,7 +1987,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="99" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6g-xc-TiK">
-                                        <rect key="frame" x="345" y="85" width="42" height="46"/>
+                                        <rect key="frame" x="345" y="85" width="42" height="35"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="pause.fill" catalog="system">
                                             <attributedString key="attributedTitle"/>
@@ -3353,19 +3356,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97l-mS-iB6">
-                                <rect key="frame" x="136" y="148" width="121" height="21"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="00:00">
-                                        <attributes>
-                                            <color key="NSColor" red="0.38444423680000001" green="0.7377594113" blue="0.70588386059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="22" name="Ubuntu"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jLy-vP-ILt">
                                 <rect key="frame" x="0.0" y="722" width="393" height="53"/>
                                 <subviews>
@@ -3379,13 +3369,13 @@
                                                 <fragment content="Erase">
                                                     <attributes>
                                                         <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <color key="NSColor" red="0.38444423680000001" green="0.7377594113" blue="0.70588386059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                        <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="15" name="Helvetica"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
-                                            <color key="baseForegroundColor" red="0.38444423680000001" green="0.7377594113" blue="0.70588386059999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="baseForegroundColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="EraserFunction:" destination="vFI-47-1Da" eventType="touchUpInside" id="r2F-Ex-HSJ"/>
@@ -3428,6 +3418,19 @@
                                     <constraint firstAttribute="trailing" secondItem="OWB-fD-RZZ" secondAttribute="trailing" constant="72" id="zIH-8a-wCi"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97l-mS-iB6">
+                                <rect key="frame" x="141" y="148" width="111" height="39"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="00:00">
+                                        <attributes>
+                                            <color key="NSColor" red="0.13442632560000001" green="0.76976597309999995" blue="0.97218650579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="28" name="Verdana"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2jv-ag-bY8"/>
                         <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -3435,6 +3438,8 @@
                             <constraint firstItem="2jv-ag-bY8" firstAttribute="bottom" secondItem="NZ4-ZJ-flz" secondAttribute="bottom" constant="195" id="0Mh-xm-bsc"/>
                             <constraint firstItem="jLy-vP-ILt" firstAttribute="trailing" secondItem="2jv-ag-bY8" secondAttribute="trailing" id="2Yl-BM-Ngj"/>
                             <constraint firstItem="jLy-vP-ILt" firstAttribute="top" secondItem="pOm-KD-1OJ" secondAttribute="bottom" constant="14" id="3X8-j4-vZ7"/>
+                            <constraint firstItem="NZ4-ZJ-flz" firstAttribute="top" secondItem="97l-mS-iB6" secondAttribute="bottom" constant="43" id="72b-IL-bLO"/>
+                            <constraint firstItem="2jv-ag-bY8" firstAttribute="trailing" secondItem="97l-mS-iB6" secondAttribute="trailing" constant="141" id="8Wj-UJ-ZWY"/>
                             <constraint firstItem="pOm-KD-1OJ" firstAttribute="trailing" secondItem="2jv-ag-bY8" secondAttribute="trailing" id="9Wt-dl-GK5"/>
                             <constraint firstItem="pOm-KD-1OJ" firstAttribute="top" secondItem="NZ4-ZJ-flz" secondAttribute="bottom" constant="25" id="BIv-CV-va9"/>
                             <constraint firstItem="X9t-3l-bkP" firstAttribute="top" secondItem="97l-mS-iB6" secondAttribute="bottom" constant="22" id="BuK-1d-oTj"/>
@@ -3446,13 +3451,12 @@
                             <constraint firstItem="NZ4-ZJ-flz" firstAttribute="top" secondItem="MgR-iv-n9K" secondAttribute="bottom" constant="102" id="Pg2-7O-J1p"/>
                             <constraint firstItem="X9t-3l-bkP" firstAttribute="leading" secondItem="2jv-ag-bY8" secondAttribute="leading" constant="16" id="Sfu-79-xGX"/>
                             <constraint firstItem="MgR-iv-n9K" firstAttribute="top" secondItem="GTY-F6-XiU" secondAttribute="top" id="VgK-uc-W07"/>
-                            <constraint firstItem="NZ4-ZJ-flz" firstAttribute="top" secondItem="97l-mS-iB6" secondAttribute="bottom" constant="61" id="Vwn-2X-KP1"/>
                             <constraint firstItem="jLy-vP-ILt" firstAttribute="leading" secondItem="2jv-ag-bY8" secondAttribute="leading" id="WUv-kB-KUB"/>
+                            <constraint firstItem="97l-mS-iB6" firstAttribute="top" secondItem="MgR-iv-n9K" secondAttribute="bottom" constant="20" id="Xm3-gh-7FW"/>
                             <constraint firstItem="NZ4-ZJ-flz" firstAttribute="trailing" secondItem="2jv-ag-bY8" secondAttribute="trailing" id="aJc-ym-UBb"/>
                             <constraint firstItem="pOm-KD-1OJ" firstAttribute="trailing" secondItem="2jv-ag-bY8" secondAttribute="trailing" id="apo-WT-Tqk"/>
-                            <constraint firstItem="2jv-ag-bY8" firstAttribute="trailing" secondItem="97l-mS-iB6" secondAttribute="trailing" constant="136" id="cx4-Ml-lQz"/>
                             <constraint firstItem="2jv-ag-bY8" firstAttribute="bottom" secondItem="jLy-vP-ILt" secondAttribute="bottom" constant="43" id="eeQ-v3-hfn"/>
-                            <constraint firstItem="97l-mS-iB6" firstAttribute="leading" secondItem="2jv-ag-bY8" secondAttribute="leading" constant="136" id="fLo-CP-2Xq"/>
+                            <constraint firstItem="97l-mS-iB6" firstAttribute="leading" secondItem="2jv-ag-bY8" secondAttribute="leading" constant="141" id="gkk-lp-rt3"/>
                             <constraint firstItem="pOm-KD-1OJ" firstAttribute="top" secondItem="NZ4-ZJ-flz" secondAttribute="bottom" constant="25" id="hk7-Fy-y3T"/>
                             <constraint firstItem="MgR-iv-n9K" firstAttribute="trailing" secondItem="2jv-ag-bY8" secondAttribute="trailing" id="iuf-rt-eFH"/>
                             <constraint firstItem="pOm-KD-1OJ" firstAttribute="top" secondItem="NZ4-ZJ-flz" secondAttribute="bottom" constant="25" id="lQo-xK-n3z"/>
@@ -3462,7 +3466,6 @@
                             <constraint firstItem="NZ4-ZJ-flz" firstAttribute="top" secondItem="MgR-iv-n9K" secondAttribute="bottom" constant="102" id="qCI-0L-N6B"/>
                             <constraint firstItem="NZ4-ZJ-flz" firstAttribute="leading" secondItem="2jv-ag-bY8" secondAttribute="leading" id="qPc-BQ-UY9"/>
                             <constraint firstItem="pOm-KD-1OJ" firstAttribute="leading" secondItem="2jv-ag-bY8" secondAttribute="leading" id="xJ8-II-CFR"/>
-                            <constraint firstItem="97l-mS-iB6" firstAttribute="top" secondItem="MgR-iv-n9K" secondAttribute="bottom" constant="20" id="xoI-07-6np"/>
                             <constraint firstItem="2jv-ag-bY8" firstAttribute="bottom" secondItem="pOm-KD-1OJ" secondAttribute="bottom" constant="110" id="yVz-r9-SeA"/>
                         </constraints>
                         <variation key="default">
@@ -3492,7 +3495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cO4-IR-jRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2772" y="-718"/>
+            <point key="canvasLocation" x="2771.7557251908397" y="-718.30985915492965"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
