@@ -293,6 +293,8 @@ UIButton *button = nil;
             [button setTitle:number forState:UIControlStateNormal];
             [button setTitleColor:[UIColor tintColor] forState:UIControlStateNormal];
             [self CheckForMistake];
+            if ([self checkForCompletion])
+                self -> PauseMenu.hidden = NO;
         }
     }
 }

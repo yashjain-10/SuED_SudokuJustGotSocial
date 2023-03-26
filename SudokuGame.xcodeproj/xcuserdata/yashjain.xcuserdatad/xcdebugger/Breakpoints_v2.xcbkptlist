@@ -46,8 +46,8 @@
             filePath = "SudokuGame/SudokuViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "-HintFn:"
             landmarkType = "7">
          </BreakpointContent>
