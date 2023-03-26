@@ -230,6 +230,29 @@ UIButton *button = nil;
 }
 
 /*
+ * A function to check for completion
+ * Returns true if the sudoku is completed
+ */
+- (bool)checkForCompletion
+{
+    UIButton *tempbutton;
+    for (int i = 0; i < N*N; ++i)
+    {
+        int row = i / N;
+        int col = i % N;
+        
+        if (i == 0)
+            tempbutton = [self.view viewWithTag:89];
+        else
+            tempbutton = [self.view viewWithTag:row*10 + col];
+            
+        if ([tempbutton.titleLabel text] == nil || [tempbutton.titleLabel textColor] == [UIColor redColor] || [[tempbutton.titleLabel text]  isEqual: @" "])
+            return false;
+    }
+    return true;
+}
+
+/*
  * The functions to add the numbers to the board
  */
 - (IBAction)addtoBoard:(id)sender
@@ -273,6 +296,7 @@ UIButton *button = nil;
         }
     }
 }
+
 
 /*
  * Eraser Function

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2918F42229C0014A000FD72E /* CompetitiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2918F42129C0014A000FD72E /* CompetitiveViewController.m */; };
+		292DDFD429D012810085834E /* WinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 292DDFD329D012810085834E /* WinViewController.m */; };
 		2988A548299DBA8700DFB70D /* SudokuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2988A547299DBA8700DFB70D /* SudokuViewController.m */; };
 		29AD4F6E29908CE300DB2A16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD4F6D29908CE300DB2A16 /* AppDelegate.m */; };
 		29AD4F7029908CE300DB2A16 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 29AD4F6F29908CE300DB2A16 /* GameScene.sks */; };
@@ -27,6 +28,8 @@
 		2918F42029C0014A000FD72E /* CompetitiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitiveViewController.h; sourceTree = "<group>"; };
 		2918F42129C0014A000FD72E /* CompetitiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitiveViewController.m; sourceTree = "<group>"; };
 		2918F42329C00A4F000FD72E /* SudokuMultiplayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudokuMultiplayer.h; sourceTree = "<group>"; };
+		292DDFD229D012810085834E /* WinViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WinViewController.h; sourceTree = "<group>"; };
+		292DDFD329D012810085834E /* WinViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WinViewController.m; sourceTree = "<group>"; };
 		2988A546299DBA8700DFB70D /* SudokuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudokuViewController.h; sourceTree = "<group>"; };
 		2988A547299DBA8700DFB70D /* SudokuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SudokuViewController.m; sourceTree = "<group>"; };
 		29AD4F6929908CE300DB2A16 /* SudokuGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudokuGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +91,8 @@
 				29AD4F7629908CE300DB2A16 /* GameViewController.h */,
 				29AD4F7729908CE300DB2A16 /* GameViewController.m */,
 				29AD4F7929908CE300DB2A16 /* Main.storyboard */,
+				292DDFD229D012810085834E /* WinViewController.h */,
+				292DDFD329D012810085834E /* WinViewController.m */,
 				2918F42029C0014A000FD72E /* CompetitiveViewController.h */,
 				2918F42129C0014A000FD72E /* CompetitiveViewController.m */,
 				29AD4F7C29908CE400DB2A16 /* Assets.xcassets */,
@@ -184,6 +189,7 @@
 				2988A548299DBA8700DFB70D /* SudokuViewController.m in Sources */,
 				29EE296C2990927F00842B6B /* HomeViewController.m in Sources */,
 				29EA4E2529AE2FF900A85F8A /* TimerManager.m in Sources */,
+				292DDFD429D012810085834E /* WinViewController.m in Sources */,
 				2918F42229C0014A000FD72E /* CompetitiveViewController.m in Sources */,
 				29AD4F6E29908CE300DB2A16 /* AppDelegate.m in Sources */,
 			);

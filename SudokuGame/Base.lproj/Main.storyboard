@@ -75,9 +75,8 @@
                                     <action selector="playOnlineButton:" destination="1Hj-mm-W96" eventType="touchUpInside" id="SQx-MZ-19X"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yxs-uV-LAo">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yxs-uV-LAo">
                                 <rect key="frame" x="76" y="343" width="240" height="237"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Qf-Ue-6e8">
                                         <rect key="frame" x="11" y="57" width="218" height="55"/>
@@ -124,14 +123,31 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xP-9z-eH3">
+                                <rect key="frame" x="131" y="103" width="130" height="44"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="SuED">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.99869424529999995" blue="0.98454244489999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="36" name="Verdana"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RBC-bN-Oim"/>
                         <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="Yxs-uV-LAo" firstAttribute="top" secondItem="3xP-9z-eH3" secondAttribute="bottom" constant="200" id="ETl-aC-Glu"/>
+                            <constraint firstItem="RBC-bN-Oim" firstAttribute="trailing" secondItem="3xP-9z-eH3" secondAttribute="trailing" constant="132" id="Myg-J2-cd9"/>
                             <constraint firstItem="RBC-bN-Oim" firstAttribute="bottom" secondItem="Udx-9R-nBZ" secondAttribute="bottom" constant="315" id="Pse-R1-0tg"/>
+                            <constraint firstItem="3xP-9z-eH3" firstAttribute="top" secondItem="RBC-bN-Oim" secondAttribute="top" id="bvw-Fv-ffM"/>
                             <constraint firstItem="RBC-bN-Oim" firstAttribute="trailing" secondItem="Udx-9R-nBZ" secondAttribute="trailing" constant="88" id="int-B9-lMZ"/>
                             <constraint firstItem="Udx-9R-nBZ" firstAttribute="leading" secondItem="RBC-bN-Oim" secondAttribute="leading" constant="87" id="nXE-gl-YeE"/>
                             <constraint firstItem="Udx-9R-nBZ" firstAttribute="top" secondItem="RBC-bN-Oim" secondAttribute="top" constant="296" id="rBP-cq-TbR"/>
+                            <constraint firstItem="3xP-9z-eH3" firstAttribute="leading" secondItem="RBC-bN-Oim" secondAttribute="leading" constant="131" id="tf9-kQ-qOQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Kek-iw-Tgx"/>
@@ -348,13 +364,30 @@
                                             <action selector="pauseButtonPressed:" destination="eXl-cX-IrE" eventType="touchUpInside" id="dSz-bB-pdQ"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="821-6N-doY">
+                                        <rect key="frame" x="163" y="90" width="66" height="30"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="SuED">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <font key="NSFont" size="24" name="Verdana"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Z6B-kf-We8" secondAttribute="trailing" constant="6" id="1fE-AT-UcO"/>
                                     <constraint firstAttribute="bottom" secondItem="Z6B-kf-We8" secondAttribute="bottom" constant="8" id="3bQ-Ws-BWx"/>
+                                    <constraint firstItem="821-6N-doY" firstAttribute="leading" secondItem="3i4-Ym-VNw" secondAttribute="trailing" constant="47" id="BL4-gB-MgX"/>
+                                    <constraint firstItem="821-6N-doY" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="top" constant="90" id="L2C-73-4v7"/>
                                     <constraint firstAttribute="trailing" secondItem="Z6B-kf-We8" secondAttribute="trailing" constant="6" id="Mg3-Ef-M0A"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3i4-Ym-VNw" secondAttribute="trailing" constant="20" symbolic="YES" id="PjJ-Pg-EDR"/>
+                                    <constraint firstItem="Z6B-kf-We8" firstAttribute="leading" secondItem="821-6N-doY" secondAttribute="trailing" constant="116" id="VXe-0j-0Oo"/>
+                                    <constraint firstAttribute="bottom" secondItem="821-6N-doY" secondAttribute="bottom" constant="8" id="dGq-CP-zXY"/>
                                     <constraint firstItem="3i4-Ym-VNw" firstAttribute="top" secondItem="avW-MG-qao" secondAttribute="top" constant="83" id="f3Y-Kt-m56"/>
                                     <constraint firstItem="3i4-Ym-VNw" firstAttribute="leading" secondItem="avW-MG-qao" secondAttribute="leading" id="ggA-oh-Ul8"/>
                                     <constraint firstAttribute="bottom" secondItem="3i4-Ym-VNw" secondAttribute="bottom" constant="8" id="ibi-mi-6eh"/>
@@ -1755,10 +1788,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D77-yR-IB6">
-                                <rect key="frame" x="16" y="191" width="361" height="548"/>
+                                <rect key="frame" x="16" y="212" width="361" height="527"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7q-Hg-SKA">
-                                        <rect key="frame" x="72" y="252" width="217" height="45"/>
+                                        <rect key="frame" x="72" y="252" width="217" height="24"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
                                             <backgroundConfiguration key="background"/>
@@ -1872,6 +1905,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGQ-X4-AWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3852.6717557251909" y="-1485.2112676056338"/>
+        </scene>
+        <!--Win View Controller-->
+        <scene sceneID="vz2-Me-U3O">
+            <objects>
+                <viewController id="rio-Cl-fjB" customClass="WinViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dnO-uz-CBl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wN-ar-qgV">
+                                <rect key="frame" x="7" y="154" width="379" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="CONGRATULATIONS!">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="36" name="Verdana"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ek2-cs-VZX"/>
+                        <color key="backgroundColor" red="0.12552177910000001" green="0.12940970060000001" blue="0.1294118464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="atJ-lF-jMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5112" y="-1485"/>
         </scene>
         <!--Stats-->
         <scene sceneID="mNR-6f-Mgd">

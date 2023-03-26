@@ -329,10 +329,10 @@ UIButton *Button = nil;
     [self setButtonTitles];
     
     // Calling multiplayerfn
-    //[self multiPlayerFn];
+    [self multiPlayerFn];
     
     // Integrating the sudoku to the board
-    [self sudokuLoad];
+    //[self sudokuLoad];
     
     // Home Button
     [Home addTarget:self action:@selector(goHome:) forControlEvents:UIControlEventTouchUpInside];
