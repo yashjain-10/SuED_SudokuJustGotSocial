@@ -1876,11 +1876,6 @@
                             <constraint firstItem="gRP-T5-BBe" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" constant="141" id="xus-Bw-yw0"/>
                             <constraint firstItem="avW-MG-qao" firstAttribute="leading" secondItem="WPn-3p-pNy" secondAttribute="leading" id="zxs-wO-mgZ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="D77-yR-IB6"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ZTf-es-02E"/>
                     <connections>

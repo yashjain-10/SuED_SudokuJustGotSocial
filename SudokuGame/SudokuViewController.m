@@ -8,6 +8,7 @@
 #import "SudokuViewController.h"
 #import "TimerManager.h"
 #import "Sudoku.h"
+#import "WinViewController.h"
 
 @interface SudokuViewController ()
 
@@ -294,7 +295,12 @@ UIButton *button = nil;
             [button setTitleColor:[UIColor tintColor] forState:UIControlStateNormal];
             [self CheckForMistake];
             if ([self checkForCompletion])
-                self -> PauseMenu.hidden = NO;
+            {
+                [self.timerVar invalidate];
+                //self -> PauseMenu.hidden = NO;
+                UIViewController *nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+                [self presentViewController:nextViewController animated:YES completion:nil];
+            }
         }
     }
 }

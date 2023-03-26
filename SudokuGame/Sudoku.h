@@ -396,7 +396,7 @@ int empty = 0;
     switch(_difficultyLevel)
     {
         case 0 :
-            target = 81 - 32;
+            target = 81 - 80;
             break;
         
         case 1 :
