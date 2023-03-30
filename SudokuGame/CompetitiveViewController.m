@@ -9,14 +9,17 @@
 #import "SudokuMultiplayer.h"
 #import <GameKit/GameKit.h>
 
+//@interface CompetitiveViewController ()
 @interface CompetitiveViewController ()
 
 @property (nonatomic,strong) NSTimer *timerVar;
 @property (nonatomic, assign) NSTimeInterval startTime;
 @property (nonatomic, assign) NSTimeInterval elapsedTime;
 
-@property (nonatomic, assign) NSMutableArray *Grid;
+@property (nonatomic, strong) NSMutableArray *Grid;
 @property (nonatomic, strong) NSMutableArray *SolnGrid;
+
+@property (nonatomic, strong) GKMatchmakerViewController *mmvc;
 
 @end
 
@@ -258,7 +261,7 @@ UIButton *Button = nil;
 
 /*
  * Eraser Function
- * @param : The Button who's value is to be deleted/erased
+ * @param : The button who's value is to be deleted/erased
  */
 - (IBAction)EraserFunction:(id)sender
 {
@@ -299,25 +302,61 @@ UIButton *Button = nil;
         else
         {
             // Authentication failed
+            [self dismissViewControllerAnimated:YES completion:nil];
+            //[self.timerVar invalidate];
             NSLog(@"Authentication failed: %@", error);
         }
     };
     
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     request.minPlayers = 2;
-    request.maxPlayers = 4;
+    request.maxPlayers = 2;
+    
+    self.mmvc = [[GKMatchmakerViewController alloc] initWithMatchRequest:request];
+    self.mmvc.matchmakerDelegate = self;
+    
+    [self presentViewController:self.mmvc animated:YES completion:nil];
+    
+    /*
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.minPlayers = 2;
+    request.maxPlayers = 2;
     request.defaultNumberOfPlayers = 2;
 
-    [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error) {
-        if (match != nil) {
+    [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error)
+    {
+        NSLog(@"Working");
+        if (match != nil)
+        {
             // The match was found, start the game
-        } else {
+            NSLog(@"Matchmaking found");
+        }
+        else
+        {
             // Matchmaking failed
             NSLog(@"Matchmaking failed: %@", error);
+            [self dismissViewControllerAnimated:YES completion:nil];
+            //[self.timerVar invalidate];
         }
     }];
+    NSLog(@"Not Working");
+     */
 }
 
+- (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFailWithError:(NSError *)error {
+    NSLog(@"Matchmaking failed: %@", error.localizedDescription);
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)match {
+    NSLog(@"Match found");
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // Start game with the match object
+}
 
 - (void)viewDidLoad
 {

@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29177E2A29D5173D0074DC58 /* SudokuGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SudokuGame.entitlements; sourceTree = "<group>"; };
 		2918F42029C0014A000FD72E /* CompetitiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitiveViewController.h; sourceTree = "<group>"; };
 		2918F42129C0014A000FD72E /* CompetitiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitiveViewController.m; sourceTree = "<group>"; };
 		2918F42329C00A4F000FD72E /* SudokuMultiplayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudokuMultiplayer.h; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		29AD4F6B29908CE300DB2A16 /* SudokuGame */ = {
 			isa = PBXGroup;
 			children = (
+				29177E2A29D5173D0074DC58 /* SudokuGame.entitlements */,
 				29AD4F6C29908CE300DB2A16 /* AppDelegate.h */,
 				29AD4F6D29908CE300DB2A16 /* AppDelegate.m */,
 				29AD4F6F29908CE300DB2A16 /* GameScene.sks */,
@@ -332,8 +334,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SudokuGame/SudokuGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52S642L2Z4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -358,8 +362,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SudokuGame/SudokuGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 52S642L2Z4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

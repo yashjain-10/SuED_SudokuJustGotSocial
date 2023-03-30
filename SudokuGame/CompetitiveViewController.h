@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CompetitiveViewController : UIViewController
+@interface CompetitiveViewController : UIViewController <GKMatchmakerViewControllerDelegate>
 {
     // Main Buttons
     IBOutlet UIButton *Pause;
