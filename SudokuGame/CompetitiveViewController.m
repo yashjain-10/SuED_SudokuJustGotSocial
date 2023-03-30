@@ -120,7 +120,7 @@ UIButton *Button = nil;
  * Stops the timer as well
  */
 - (IBAction)pauseButtonPressed:(id)sender {
-    [self.timerVar invalidate];
+    //[self.timerVar invalidate];
     self->PauseMenu.hidden = NO;
 }
 
@@ -308,39 +308,24 @@ UIButton *Button = nil;
         }
     };
     
+    // Generating the sudoku before matchmaking
+    SudokuMultiplayer *sudoku = [[SudokuMultiplayer alloc] init];
+    [sudoku GenerateSudoku];
+    _Grid = [sudoku GetFinalGrid:0];
+    _SolnGrid = [sudoku GetFinalGrid:1];
+    
+    // Create a match request
     GKMatchRequest *request = [[GKMatchRequest alloc] init];
     request.minPlayers = 2;
     request.maxPlayers = 2;
     
+    // Create a matchmaker view controller
     self.mmvc = [[GKMatchmakerViewController alloc] initWithMatchRequest:request];
     self.mmvc.matchmakerDelegate = self;
     
+    // View the view controller
     [self presentViewController:self.mmvc animated:YES completion:nil];
     
-    /*
-    GKMatchRequest *request = [[GKMatchRequest alloc] init];
-    request.minPlayers = 2;
-    request.maxPlayers = 2;
-    request.defaultNumberOfPlayers = 2;
-
-    [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error)
-    {
-        NSLog(@"Working");
-        if (match != nil)
-        {
-            // The match was found, start the game
-            NSLog(@"Matchmaking found");
-        }
-        else
-        {
-            // Matchmaking failed
-            NSLog(@"Matchmaking failed: %@", error);
-            [self dismissViewControllerAnimated:YES completion:nil];
-            //[self.timerVar invalidate];
-        }
-    }];
-    NSLog(@"Not Working");
-     */
 }
 
 - (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController {
@@ -355,7 +340,25 @@ UIButton *Button = nil;
 - (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)match {
     NSLog(@"Match found");
     [self dismissViewControllerAnimated:YES completion:nil];
+    
     // Start game with the match object
+    // Share the puzzle with the other player
+    NSData *puzzleData = [NSKeyedArchiver archivedDataWithRootObject:_Grid requiringSecureCoding:NO error:nil];
+    NSError *error;
+    [self.match sendDataToAllPlayers:puzzleData withDataMode:GKMatchSendDataReliable error:&error];
+    if (error) {
+        NSLog(@"Error sending puzzle: %@", error);
+    }
+    
+    CompetitiveViewController *compVC = [[CompetitiveViewController alloc] initWithNibName:@"CompetitiveViewController" bundle:nil];
+    compVC.match = match;
+    compVC.Grid = _Grid;
+    compVC.SolnGrid = _SolnGrid;
+    [self.navigationController pushViewController:compVC animated:YES];
+    
+    // Starts the time
+    self.startTime = [NSDate timeIntervalSinceReferenceDate];
+    self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidLoad
@@ -375,10 +378,6 @@ UIButton *Button = nil;
     
     // Home Button
     [Home addTarget:self action:@selector(goHome:) forControlEvents:UIControlEventTouchUpInside];
-    
-    // Starts the time
-    self.startTime = [NSDate timeIntervalSinceReferenceDate];
-    self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
 
 }
 

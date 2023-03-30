@@ -35,7 +35,12 @@ NS_ASSUME_NONNULL_BEGIN
     
     // Timer control
     IBOutlet UILabel *timer;
+    
 }
+
+// For multiplayer
+@property (nonatomic, strong) GKMatch *match;
+
 @end
 
 NS_ASSUME_NONNULL_END
