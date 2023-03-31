@@ -65,11 +65,6 @@ UIButton *Button = nil;
  */
 - (void)sudokuLoad
 {
-    SudokuMultiplayer *sudoku = [[SudokuMultiplayer alloc] init];
-    [sudoku GenerateSudoku];
-    _Grid = [sudoku GetFinalGrid:0];
-    _SolnGrid = [sudoku GetFinalGrid:1];
-    
     UIButton *tempbutton;
     for (int i = 0; i < X*X; ++i)
     {
@@ -87,7 +82,6 @@ UIButton *Button = nil;
         if ([_Grid[row][col] intValue] != Empty)
             [tempbutton setTitle:[NSString stringWithFormat:@"%@", _Grid[row][col]] forState:UIControlStateNormal];
     }
-    [sudoku PrintSudoku:0];
 }
 
 /*
@@ -298,6 +292,18 @@ UIButton *Button = nil;
         {
             // The player is authenticated and ready to play
             NSLog(@"Player authenticated");
+            
+            // Create a match request
+            GKMatchRequest *request = [[GKMatchRequest alloc] init];
+            request.minPlayers = 2;
+            request.maxPlayers = 2;
+            
+            // Create a matchmaker view controller
+            self.mmvc = [[GKMatchmakerViewController alloc] initWithMatchRequest:request];
+            self.mmvc.matchmakerDelegate = self;
+            
+            // View the view controller
+            [self presentViewController:self.mmvc animated:YES completion:nil];
         }
         else
         {
@@ -308,46 +314,54 @@ UIButton *Button = nil;
         }
     };
     
-    // Generating the sudoku before matchmaking
-    SudokuMultiplayer *sudoku = [[SudokuMultiplayer alloc] init];
-    [sudoku GenerateSudoku];
-    _Grid = [sudoku GetFinalGrid:0];
-    _SolnGrid = [sudoku GetFinalGrid:1];
-    
-    // Create a match request
-    GKMatchRequest *request = [[GKMatchRequest alloc] init];
-    request.minPlayers = 2;
-    request.maxPlayers = 2;
-    
-    // Create a matchmaker view controller
-    self.mmvc = [[GKMatchmakerViewController alloc] initWithMatchRequest:request];
-    self.mmvc.matchmakerDelegate = self;
-    
-    // View the view controller
-    [self presentViewController:self.mmvc animated:YES completion:nil];
-    
 }
 
-- (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController {
+- (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFailWithError:(NSError *)error {
+- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFailWithError:(NSError *)error
+{
     NSLog(@"Matchmaking failed: %@", error.localizedDescription);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)match {
+- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)match
+{
     NSLog(@"Match found");
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    // Start game with the match object
-    // Share the puzzle with the other player
-    NSData *puzzleData = [NSKeyedArchiver archivedDataWithRootObject:_Grid requiringSecureCoding:NO error:nil];
-    NSError *error;
-    [self.match sendDataToAllPlayers:puzzleData withDataMode:GKMatchSendDataReliable error:&error];
-    if (error) {
-        NSLog(@"Error sending puzzle: %@", error);
+    // Check for Player 1
+    NSUInteger playerNumber = [match.players indexOfObject:[GKLocalPlayer localPlayer]];
+    
+    // Player 1 generates the sudoku and sends it to player 2
+    if (playerNumber == 0)
+    {
+        // Generate a sudoku
+        SudokuMultiplayer *sudoku = [[SudokuMultiplayer alloc] init];
+        [sudoku GenerateSudoku];
+        self.Grid = [sudoku GetFinalGrid:0];
+        self.SolnGrid = [sudoku GetFinalGrid:1];
+        
+        // Share the puzzle with the other player
+        NSData *puzzleData = [NSKeyedArchiver archivedDataWithRootObject:self.Grid requiringSecureCoding:NO error:nil];
+        NSError *error;
+        [self.match sendDataToAllPlayers:puzzleData withDataMode:GKMatchSendDataReliable error:&error];
+        if (error) {
+            NSLog(@"Error sending puzzle: %@", error);
+        }
+        
+        // Load the sudoku
+        [self sudokuLoad];
+        
+        // Starts the time
+        self.startTime = [NSDate timeIntervalSinceReferenceDate];
+        self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
+    }
+    else
+    {
+        NSLog(@"Waiting for Data from Player 1");
     }
     
     CompetitiveViewController *compVC = [[CompetitiveViewController alloc] initWithNibName:@"CompetitiveViewController" bundle:nil];
@@ -356,10 +370,27 @@ UIButton *Button = nil;
     compVC.SolnGrid = _SolnGrid;
     [self.navigationController pushViewController:compVC animated:YES];
     
-    // Starts the time
-    self.startTime = [NSDate timeIntervalSinceReferenceDate];
-    self.timerVar = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFn) userInfo:nil repeats:YES];
+    // Load the sudoku
+    [self sudokuLoad];
+    
+    
 }
+
+- (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(GKPlayer *)player {
+    // Unarchive the puzzle data
+    NSUInteger playerNumber = [match.players indexOfObject:[GKLocalPlayer localPlayer]];
+    
+    if (playerNumber == 1)
+    {
+        NSMutableArray *grid = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSArray class] fromData:data error:nil];
+        
+        _Grid = grid;
+        NSLog(@"Puzzle data received from %@", player.alias);
+        [self sudokuLoad];
+        
+    }
+}
+
 
 - (void)viewDidLoad
 {
