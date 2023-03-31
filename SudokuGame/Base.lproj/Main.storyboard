@@ -3460,10 +3460,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9t-3l-bkP">
-                                <rect key="frame" x="16" y="191" width="361" height="548"/>
+                                <rect key="frame" x="16" y="209" width="361" height="530"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWB-fD-RZZ">
-                                        <rect key="frame" x="72" y="252" width="217" height="45"/>
+                                        <rect key="frame" x="72" y="252" width="217" height="27"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
                                             <backgroundConfiguration key="background"/>
@@ -3482,6 +3482,13 @@
                                             <action selector="resumeButtonPressed:" destination="vFI-47-1Da" eventType="touchUpInside" id="pkq-b2-arh"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zn-XU-gDl">
+                                        <rect key="frame" x="110" y="321" width="141" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -3544,11 +3551,6 @@
                             <constraint firstItem="pOm-KD-1OJ" firstAttribute="leading" secondItem="2jv-ag-bY8" secondAttribute="leading" id="xJ8-II-CFR"/>
                             <constraint firstItem="2jv-ag-bY8" firstAttribute="bottom" secondItem="pOm-KD-1OJ" secondAttribute="bottom" constant="110" id="yVz-r9-SeA"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="X9t-3l-bkP"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="sb8-fH-p97"/>
                     <connections>
@@ -3566,6 +3568,7 @@
                         <outlet property="number7" destination="Pdw-xH-hhM" id="REY-LG-TDJ"/>
                         <outlet property="number8" destination="jke-33-Pic" id="m4T-Fe-3M8"/>
                         <outlet property="number9" destination="QEk-g9-rPI" id="7G2-oT-DM6"/>
+                        <outlet property="tester" destination="4Zn-XU-gDl" id="FHA-We-vGo"/>
                         <outlet property="timer" destination="97l-mS-iB6" id="fD3-3p-j85"/>
                     </connections>
                 </viewController>

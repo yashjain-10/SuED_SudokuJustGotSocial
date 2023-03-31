@@ -334,22 +334,39 @@ UIButton *Button = nil;
     
     // Check for Player 1
     NSUInteger playerNumber = [match.players indexOfObject:[GKLocalPlayer localPlayer]];
+    NSLog(@"Player number: %lu", playerNumber);
     
     // Player 1 generates the sudoku and sends it to player 2
-    if (playerNumber == 0)
+    if (playerNumber == NSNotFound)
     {
+        self->PauseMenu.hidden = NO;
+        tester.text = @"Generating Sudoku";
+        
         // Generate a sudoku
         SudokuMultiplayer *sudoku = [[SudokuMultiplayer alloc] init];
         [sudoku GenerateSudoku];
+        tester.text = @"Sudoku Generated";
+        
         self.Grid = [sudoku GetFinalGrid:0];
         self.SolnGrid = [sudoku GetFinalGrid:1];
         
         // Share the puzzle with the other player
         NSData *puzzleData = [NSKeyedArchiver archivedDataWithRootObject:self.Grid requiringSecureCoding:NO error:nil];
         NSError *error;
-        [self.match sendDataToAllPlayers:puzzleData withDataMode:GKMatchSendDataReliable error:&error];
+        if (match.players.count < 2) {
+            // Handle the error condition here
+            NSLog(@"Error: not enough players in the match");
+            return;
+        }
+        NSArray *player2 = @[match.players[1]]; // send the puzzle to player 2
+        [self.match sendData:puzzleData toPlayers:player2 dataMode:GKMatchSendDataReliable error:&error];
         if (error) {
             NSLog(@"Error sending puzzle: %@", error);
+        }
+        else
+        {
+            tester.text = @"Sudoku Sent";
+            self->PauseMenu.hidden = YES;
         }
         
         // Load the sudoku
@@ -385,7 +402,7 @@ UIButton *Button = nil;
         NSMutableArray *grid = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSArray class] fromData:data error:nil];
         
         _Grid = grid;
-        NSLog(@"Puzzle data received from %@", player.alias);
+        NSLog(@"Puzzle data received");
         [self sudokuLoad];
         
     }

@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
     // Timer control
     IBOutlet UILabel *timer;
     
+    IBOutlet UILabel *tester;
+    
 }
 
 // For multiplayer
