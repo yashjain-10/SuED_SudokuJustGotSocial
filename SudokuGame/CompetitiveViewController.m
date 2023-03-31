@@ -297,8 +297,17 @@ UIButton *Button = nil;
             GKMatchRequest *request = [[GKMatchRequest alloc] init];
             request.minPlayers = 2;
             request.maxPlayers = 2;
+            request.defaultNumberOfPlayers = 2;
             
             // Create a matchmaker view controller
+            [[GKMatchmaker sharedMatchmaker] findMatchForRequest:request withCompletionHandler:^(GKMatch *match, NSError *error) {
+                if (error) {
+                    NSLog(@"Error finding match: %@", error);
+                } else {
+                    NSLog(@"Match found with %lu players", (unsigned long)match.players.count);
+                }
+            }];
+
             self.mmvc = [[GKMatchmakerViewController alloc] initWithMatchRequest:request];
             self.mmvc.matchmakerDelegate = self;
             
@@ -333,11 +342,13 @@ UIButton *Button = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
     
     // Check for Player 1
-    NSUInteger playerNumber = [match.players indexOfObject:[GKLocalPlayer localPlayer]];
+    NSLog(@"Players count : %lu", _match.players.count);
+    NSUInteger playerNumber = [_match.players indexOfObject:[GKLocalPlayer localPlayer]];
     NSLog(@"Player number: %lu", playerNumber);
+
     
     // Player 1 generates the sudoku and sends it to player 2
-    if (playerNumber == NSNotFound)
+    if (playerNumber == 0)
     {
         self->PauseMenu.hidden = NO;
         tester.text = @"Generating Sudoku";
@@ -353,12 +364,12 @@ UIButton *Button = nil;
         // Share the puzzle with the other player
         NSData *puzzleData = [NSKeyedArchiver archivedDataWithRootObject:self.Grid requiringSecureCoding:NO error:nil];
         NSError *error;
-        if (match.players.count < 2) {
+        if (_match.players.count < 2) {
             // Handle the error condition here
-            NSLog(@"Error: not enough players in the match");
+            NSLog(@"Error: not enough players in the match %lu", _match.players.count);
             return;
         }
-        NSArray *player2 = @[match.players[1]]; // send the puzzle to player 2
+        NSArray *player2 = @[_match.players[1]]; // send the puzzle to player 2
         [self.match sendData:puzzleData toPlayers:player2 dataMode:GKMatchSendDataReliable error:&error];
         if (error) {
             NSLog(@"Error sending puzzle: %@", error);
@@ -382,7 +393,7 @@ UIButton *Button = nil;
     }
     
     CompetitiveViewController *compVC = [[CompetitiveViewController alloc] initWithNibName:@"CompetitiveViewController" bundle:nil];
-    compVC.match = match;
+    compVC.match = _match;
     compVC.Grid = _Grid;
     compVC.SolnGrid = _SolnGrid;
     [self.navigationController pushViewController:compVC animated:YES];
@@ -395,7 +406,7 @@ UIButton *Button = nil;
 
 - (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(GKPlayer *)player {
     // Unarchive the puzzle data
-    NSUInteger playerNumber = [match.players indexOfObject:[GKLocalPlayer localPlayer]];
+    NSUInteger playerNumber = [_match.players indexOfObject:[GKLocalPlayer localPlayer]];
     
     if (playerNumber == 1)
     {
