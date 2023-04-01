@@ -25,6 +25,8 @@
 
 NSString *number;
 UIButton *button = nil;
+int mistakesCount = 0;
+int hintCount = 0;
 
 - (void)setButtonTitles
 {
@@ -227,7 +229,10 @@ UIButton *button = nil;
         col = (int)tag % 10;
     }
     if ([NSString stringWithFormat:@"%@", number] != [NSString stringWithFormat:@"%@", _SolnGrid[row][col]])
+    {
+        mistakesCount++;
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
 }
 
 /*
@@ -294,6 +299,11 @@ UIButton *button = nil;
             [button setTitle:number forState:UIControlStateNormal];
             [button setTitleColor:[UIColor tintColor] forState:UIControlStateNormal];
             [self CheckForMistake];
+            if (mistakesCount > 3)
+            {
+                UIViewController *nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoseViewController"];
+                [self presentViewController:nextViewController animated:YES completion:nil];
+            }
             if ([self checkForCompletion])
             {
                 [self.timerVar invalidate];
@@ -329,6 +339,8 @@ UIButton *button = nil;
  */
 - (IBAction)HintFn:(id)sender
 {
+    if (hintCount >= 3)
+        return;
     if ([sender isKindOfClass:[UIButton class]] && [button.titleLabel textColor] != [UIColor blackColor])
     {
         int index = (int)button.tag;
@@ -345,6 +357,7 @@ UIButton *button = nil;
         }
         [button setTitle:[NSString stringWithFormat:@"%@", _SolnGrid[row][col]] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        hintCount++;
     }
 }
 
@@ -353,6 +366,10 @@ UIButton *button = nil;
     [super viewDidLoad];
     // Hiding thr pause menu in the beginning
     self->PauseMenu.hidden = YES;
+    
+    // Resetting the mistake and hint counters
+    hintCount = 0;
+    mistakesCount = 0;
     
     // Setting the nutton titles of the bottom row
     [self setButtonTitles];

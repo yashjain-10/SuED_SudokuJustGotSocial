@@ -22,6 +22,7 @@
 		29EA4E2529AE2FF900A85F8A /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EA4E2429AE2FF900A85F8A /* TimerManager.m */; };
 		29EA4E2F29AFB53500A85F8A /* Sudoku.h in Sources */ = {isa = PBXBuildFile; fileRef = 29EA4E2E29AFB53500A85F8A /* Sudoku.h */; };
 		29EE296C2990927F00842B6B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EE296B2990927F00842B6B /* HomeViewController.m */; };
+		29FB85D229D7D0A700882D89 /* LoseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FB85D129D7D0A700882D89 /* LoseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		29EA4E2E29AFB53500A85F8A /* Sudoku.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sudoku.h; sourceTree = "<group>"; };
 		29EE296A2990927F00842B6B /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		29EE296B2990927F00842B6B /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		29FB85D029D7D0A700882D89 /* LoseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoseViewController.h; sourceTree = "<group>"; };
+		29FB85D129D7D0A700882D89 /* LoseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				29AD4F7629908CE300DB2A16 /* GameViewController.h */,
 				29AD4F7729908CE300DB2A16 /* GameViewController.m */,
 				29AD4F7929908CE300DB2A16 /* Main.storyboard */,
+				29FB85D029D7D0A700882D89 /* LoseViewController.h */,
+				29FB85D129D7D0A700882D89 /* LoseViewController.m */,
 				292DDFD229D012810085834E /* WinViewController.h */,
 				292DDFD329D012810085834E /* WinViewController.m */,
 				2918F42029C0014A000FD72E /* CompetitiveViewController.h */,
@@ -194,6 +199,7 @@
 				292DDFD429D012810085834E /* WinViewController.m in Sources */,
 				2918F42229C0014A000FD72E /* CompetitiveViewController.m in Sources */,
 				29AD4F6E29908CE300DB2A16 /* AppDelegate.m in Sources */,
+				29FB85D229D7D0A700882D89 /* LoseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

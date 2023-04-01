@@ -304,7 +304,7 @@ UIButton *Button = nil;
                 if (error) {
                     NSLog(@"Error finding match: %@", error);
                 } else {
-                    NSLog(@"Match found with %lu players", (unsigned long)match.players.count);
+                    NSLog(@"Match found with %lu players", (unsigned long)self.match.players.count);
                 }
             }];
 
@@ -336,19 +336,36 @@ UIButton *Button = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)match
+- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)_match
 {
-    NSLog(@"Match found");
+    NSLog(@"Match found with %lu players", (unsigned long)self.match.players.count);
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSError *error = nil;
+    NSString *playerUUID = [[NSUUID UUID] UUIDString];
+    NSData *data = [playerUUID dataUsingEncoding:NSUTF8StringEncoding];
+    BOOL success = [self.match sendDataToAllPlayers:data withDataMode:GKMatchSendDataReliable error:&error];
+    if (!success) {
+        NSLog(@"Error sending data: %@", error);
+    }
+    
+    NSString *playerID;
+    for (GKPlayer *player in _match.players)
+    {
+        playerID = player.gamePlayerID;
+        NSLog(@"Player ID: %@", playerID);
+    }
     
     // Check for Player 1
     NSLog(@"Players count : %lu", _match.players.count);
-    NSUInteger playerNumber = [_match.players indexOfObject:[GKLocalPlayer localPlayer]];
-    NSLog(@"Player number: %lu", playerNumber);
+    
+    NSString *localPlayerID = [GKLocalPlayer localPlayer].gamePlayerID;
+    NSLog(@"Local player ID: %@", localPlayerID);
+
 
     
     // Player 1 generates the sudoku and sends it to player 2
-    if (playerNumber == 0)
+    if (localPlayerID <= playerID)
     {
         self->PauseMenu.hidden = NO;
         tester.text = @"Generating Sudoku";
@@ -364,11 +381,7 @@ UIButton *Button = nil;
         // Share the puzzle with the other player
         NSData *puzzleData = [NSKeyedArchiver archivedDataWithRootObject:self.Grid requiringSecureCoding:NO error:nil];
         NSError *error;
-        if (_match.players.count < 2) {
-            // Handle the error condition here
-            NSLog(@"Error: not enough players in the match %lu", _match.players.count);
-            return;
-        }
+        
         NSArray *player2 = @[_match.players[1]]; // send the puzzle to player 2
         [self.match sendData:puzzleData toPlayers:player2 dataMode:GKMatchSendDataReliable error:&error];
         if (error) {
@@ -398,17 +411,29 @@ UIButton *Button = nil;
     compVC.SolnGrid = _SolnGrid;
     [self.navigationController pushViewController:compVC animated:YES];
     
-    // Load the sudoku
-    [self sudokuLoad];
-    
     
 }
 
 - (void)match:(GKMatch *)match didReceiveData:(NSData *)data fromPlayer:(GKPlayer *)player {
-    // Unarchive the puzzle data
-    NSUInteger playerNumber = [_match.players indexOfObject:[GKLocalPlayer localPlayer]];
     
-    if (playerNumber == 1)
+    NSString *receivedString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"Received data: %@ from player: %@", receivedString, player.displayName);
+
+    // Unarchive the puzzle data
+    NSString *playerID;
+    for (GKPlayer *player in _match.players)
+    {
+        playerID = player.teamPlayerID;
+        NSLog(@"Player ID: %@", playerID);
+    }
+    
+    // Check for Player 1
+    NSLog(@"Players count : %lu", _match.players.count);
+    
+    NSString *localPlayerID = [GKLocalPlayer localPlayer].teamPlayerID;
+    NSLog(@"Local player ID: %@", localPlayerID);
+    
+    if (localPlayerID >= playerID)
     {
         NSMutableArray *grid = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSArray class] fromData:data error:nil];
         
