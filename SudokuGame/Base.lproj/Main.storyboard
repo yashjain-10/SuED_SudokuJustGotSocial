@@ -1919,7 +1919,7 @@
         <!--Win View Controller-->
         <scene sceneID="vz2-Me-U3O">
             <objects>
-                <viewController id="rio-Cl-fjB" customClass="WinViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WinViewController" id="rio-Cl-fjB" customClass="WinViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dnO-uz-CBl">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

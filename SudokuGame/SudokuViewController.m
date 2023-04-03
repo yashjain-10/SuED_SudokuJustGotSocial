@@ -302,13 +302,15 @@ int hintCount = 0;
             if (mistakesCount > 3)
             {
                 UIViewController *nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoseViewController"];
+                nextViewController.modalPresentationStyle = UIModalPresentationFullScreen;
                 [self presentViewController:nextViewController animated:YES completion:nil];
             }
             if ([self checkForCompletion])
             {
                 [self.timerVar invalidate];
                 //self -> PauseMenu.hidden = NO;
-                UIViewController *nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+                UIViewController *nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WinViewController"];
+                nextViewController.modalPresentationStyle = UIModalPresentationFullScreen;
                 [self presentViewController:nextViewController animated:YES completion:nil];
             }
         }
