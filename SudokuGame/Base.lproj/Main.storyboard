@@ -1962,7 +1962,7 @@
                                     <fragment content="You Lose!">
                                         <attributes>
                                             <color key="NSColor" red="0.97435897435897434" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="36" name=".SFNS-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="36"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -3615,7 +3615,7 @@
         <segue reference="G0o-SA-LK1"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="arrowshape.backward" catalog="system" width="128" height="104"/>
+        <image name="arrowshape.backward" catalog="system" width="32" height="32"/>
         <image name="chart.bar" catalog="system" width="128" height="89"/>
         <image name="eraser" catalog="system" width="128" height="119"/>
         <image name="house" catalog="system" width="128" height="104"/>
